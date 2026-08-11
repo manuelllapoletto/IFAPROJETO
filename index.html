@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Responsividade -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="AquaCEP — Projeto de aquecimento sustentável da piscina do Colégio Estadual do Paraná.">
+
+    <title>AquaCEP | Aquecimento Sustentável</title>
+
+    <!-- Fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         CABEÇALHO / MENU
+    ========================================== -->
+
+    <header class="header">
+
+        <nav class="navbar">
+
+            <a href="#inicio" class="logo">
+                <span class="logo-icon">☀</span>
+                <span>Aqua<span>CEP</span></span>
+            </a>
+
+            <button class="menu-toggle"
+                aria-label="Abrir menu"
+                aria-expanded="false">
+                ☰
+            </button>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="#inicio">Início</a>
+                </li>
+
+                <li>
+                    <a href="#projeto">Projeto</a>
+                </li>
+
+                <li>
+                    <a href="#optica">Óptica</a>
+                </li>
+
+                <li>
+                    <a href="#robotica">Robótica</a>
+                </li>
+
+                <li>
+                    <a href="#simulador">Simulador</a>
+                </li>
+
+                <li>
+                    <a href="#sustentabilidade">Sustentabilidade</a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- =========================================
+             HERO / INÍCIO
+        ========================================== -->
+
+        <section id="inicio" class="hero">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">
+                    PROJETO INTEGRADOR • CEP
+                </span>
+
+                <h1>
+                    Energia solar para uma
+                    <span>piscina mais sustentável.</span>
+                </h1>
+
+                <p>
+                    Uma proposta que une Física, Óptica, Robótica
+                    e Programação para imaginar um sistema inteligente
+                    de aquecimento da piscina do Colégio Estadual do Paraná.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#simulador" class="btn btn-primary">
+                        Testar o sistema
+                        <span>→</span>
+                    </a>
+
+                    <a href="#projeto" class="btn btn-secondary">
+                        Conhecer o projeto
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Ilustração do sistema -->
+
+            <div class="hero-visual">
+
+                <div class="sun">
+                    ☀
+                </div>
+
+                <div class="solar-panel">
+
+                    <div class="panel-grid">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+                <div class="water-flow flow-1"></div>
+                <div class="water-flow flow-2"></div>
+
+                <div class="pool">
+
+                    <div class="pool-water">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+                <div class="temperature-card">
+
+                    <span class="temp-icon">🌡️</span>
+
+                    <div>
+                        <small>Temperatura</small>
+                        <strong id="hero-temperature">28°C</strong>
+                    </div>
+
+                    <div class="status-dot"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             PROJETO
+        ========================================== -->
+
+        <section id="projeto" class="section">
+
+            <div class="section-heading">
+
+                <span class="section-tag">
+                    01 • O PROJETO
+                </span>
+
+                <h2>
+                    Como podemos aquecer
+                    <span>a piscina?</span>
+                </h2>
+
+                <p>
+                    O AquaCEP propõe o aproveitamento da energia solar
+                    para auxiliar no aquecimento da piscina, utilizando
+                    sensores e elementos automatizados para acompanhar
+                    a temperatura da água.
+                </p>
+
+            </div>
+
+
+            <div class="cards-grid">
+
+                <article class="info-card">
+
+                    <div class="card-icon solar-icon">
+                        ☀️
+                    </div>
+
+                    <h3>Energia Solar</h3>
+
+                    <p>
+                        A radiação solar é captada por coletores,
+                        permitindo aproveitar uma fonte renovável
+                        de energia para o aquecimento.
+                    </p>
+
+                </article>
+
+
+                <article class="info-card">
+
+                    <div class="card-icon temperature-icon">
+                        🌡️
+                    </div>
+
+                    <h3>Sensor de temperatura</h3>
+
+                    <p>
+                        O sensor acompanha a temperatura da água
+                        e envia essas informações para o sistema
+                        de controle.
+                    </p>
+
+                </article>
+
+
+                <article class="info-card">
+
+                    <div class="card-icon robot-icon">
+                        🤖
+                    </div>
+
+                    <h3>Automação</h3>
+
+                    <p>
+                        Um controlador pode analisar os dados recebidos
+                        e determinar quando o sistema deve aquecer
+                        ou interromper o processo.
+                    </p>
+
+                </article>
+
+
+                <article class="info-card">
+
+                    <div class="card-icon led-icon">
+                        💡
+                    </div>
+
+                    <h3>LED RGB</h3>
+
+                    <p>
+                        O LED funciona como uma sinalização visual,
+                        indicando diferentes estados de temperatura
+                        por meio das cores.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             COMO FUNCIONA
+        ========================================== -->
+
+        <section class="how-section">
+
+            <div class="section-heading centered">
+
+                <span class="section-tag">
+                    O SISTEMA
+                </span>
+
+                <h2>
+                    Do Sol para a piscina
+                    <span>em algumas etapas.</span>
+                </h2>
+
+            </div>
+
+
+            <div class="steps">
+
+                <div class="step">
+
+                    <div class="step-number">01</div>
+
+                    <div class="step-icon">☀️</div>
+
+                    <h3>Captação</h3>
+
+                    <p>
+                        Os coletores recebem a radiação solar.
+                    </p>
+
+                </div>
+
+
+                <div class="step-line"></div>
+
+
+                <div class="step">
+
+                    <div class="step-number">02</div>
+
+                    <div class="step-icon">🔥</div>
+
+                    <h3>Aquecimento</h3>
+
+                    <p>
+                        A energia captada é utilizada no processo
+                        de aquecimento da água.
+                    </p>
+
+                </div>
+
+
+                <div class="step-line"></div>
+
+
+                <div class="step">
+
+                    <div class="step-number">03</div>
+
+                    <div class="step-icon">🌡️</div>
+
+                    <h3>Medição</h3>
+
+                    <p>
+                        O sensor verifica continuamente a temperatura.
+                    </p>
+
+                </div>
+
+
+                <div class="step-line"></div>
+
+
+                <div class="step">
+
+                    <div class="step-number">04</div>
+
+                    <div class="step-icon">💡</div>
+
+                    <h3>Sinalização</h3>
+
+                    <p>
+                        O LED RGB mostra o estado atual do sistema.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             ÓPTICA
+        ========================================== -->
+
+        <section id="optica" class="section optical-section">
+
+            <div class="section-heading">
+
+                <span class="section-tag">
+                    02 • TECNOCIÊNCIA
+                </span>
+
+                <h2>
+                    A Óptica por trás
+                    <span>da energia solar.</span>
+                </h2>
+
+                <p>
+                    A luz do Sol é uma forma de radiação eletromagnética.
+                    Ao atingir diferentes materiais, ela pode ser absorvida,
+                    refletida ou sofrer refração.
+                </p>
+
+            </div>
+
+
+            <div class="optics-grid">
+
+                <article class="optic-card">
+
+                    <div class="optic-illustration absorption">
+                        ☀️
+                        <div class="light-ray"></div>
+                        <div class="dark-surface"></div>
+                    </div>
+
+                    <div class="optic-content">
+
+                        <span>01</span>
+
+                        <h3>Absorção</h3>
+
+                        <p>
+                            Parte da radiação que chega ao coletor pode
+                            ser absorvida pelo material e transformada
+                            em energia térmica.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="optic-card">
+
+                    <div class="optic-illustration reflection">
+
+                        ☀️
+
+                        <div class="reflection-ray"></div>
+
+                    </div>
+
+                    <div class="optic-content">
+
+                        <span>02</span>
+
+                        <h3>Reflexão</h3>
+
+                        <p>
+                            Quando a luz encontra uma superfície,
+                            parte dela pode retornar ao ambiente.
+                            Por isso, o material e seu acabamento
+                            são importantes no projeto.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="optic-card">
+
+                    <div class="optic-illustration refraction">
+
+                        💡
+
+                        <div class="glass"></div>
+
+                    </div>
+
+                    <div class="optic-content">
+
+                        <span>03</span>
+
+                        <h3>Refração</h3>
+
+                        <p>
+                            Quando a luz passa de um meio para outro,
+                            sua velocidade muda e sua trajetória
+                            pode sofrer alteração.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- Relação com cores -->
+
+            <div class="color-science">
+
+                <div class="color-text">
+
+                    <span class="section-tag">
+                        ÓPTICA + TECNOLOGIA
+                    </span>
+
+                    <h2>
+                        A luz também
+                        <span>pode informar.</span>
+                    </h2>
+
+                    <p>
+                        O LED RGB utiliza componentes que emitem
+                        luz vermelha, verde e azul. A combinação
+                        dessas luzes permite produzir diferentes cores.
+                    </p>
+
+                    <p>
+                        No nosso projeto, essas cores podem representar
+                        diferentes estados do sistema de aquecimento.
+                    </p>
+
+                </div>
+
+
+                <div class="rgb-demo">
+
+                    <div class="rgb-light" id="rgb-light">
+                        <div class="rgb-core"></div>
+                    </div>
+
+                    <span class="rgb-label">
+                        LED RGB
+                    </span>
+
+                    <div class="rgb-controls">
+
+                        <label>
+                            Vermelho
+                            <input
+                                type="range"
+                                id="red-range"
+                                min="0"
+                                max="255"
+                                value="255">
+                        </label>
+
+                        <label>
+                            Verde
+                            <input
+                                type="range"
+                                id="green-range"
+                                min="0"
+                                max="255"
+                                value="0">
+                        </label>
+
+                        <label>
+                            Azul
+                            <input
+                                type="range"
+                                id="blue-range"
+                                min="0"
+                                max="255"
+                                value="0">
+                        </label>
+
+                    </div>
+
+                    <p id="rgb-value">
+                        RGB(255, 0, 0)
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             ROBÓTICA
+        ========================================== -->
+
+        <section id="robotica" class="section robotics-section">
+
+            <div class="section-heading centered">
+
+                <span class="section-tag">
+                    03 • ROBÓTICA
+                </span>
+
+                <h2>
+                    Um sistema que
+                    <span>toma decisões.</span>
+                </h2>
+
+                <p>
+                    Sensores fornecem informações ao controlador,
+                    que pode acionar diferentes componentes de acordo
+                    com a temperatura detectada.
+                </p>
+
+            </div>
+
+
+            <div class="flowchart">
+
+                <div class="flow-node solar-node">
+
+                    <span>☀️</span>
+
+                    <strong>Coletor solar</strong>
+
+                    <small>
+                        Capta energia
+                    </small>
+
+                </div>
+
+
+                <div class="flow-arrow">↓</div>
+
+
+                <div class="flow-node sensor-node">
+
+                    <span>🌡️</span>
+
+                    <strong>Sensor</strong>
+
+                    <small>
+                        Mede a temperatura
+                    </small>
+
+                </div>
+
+
+                <div class="flow-arrow">↓</div>
+
+
+                <div class="flow-node control-node">
+
+                    <span>🧠</span>
+
+                    <strong>Controlador</strong>
+
+                    <small>
+                        Analisa os dados
+                    </small>
+
+                </div>
+
+
+                <div class="flow-branches">
+
+                    <div class="branch">
+
+                        <div class="flow-arrow">↙</div>
+
+                        <div class="flow-node">
+
+                            <span>⚙️</span>
+
+                            <strong>Atuador</strong>
+
+                            <small>
+                                Controla o sistema
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="branch">
+
+                        <div class="flow-arrow">↘</div>
+
+                        <div class="flow-node rgb-node">
+
+                            <span>💡</span>
+
+                            <strong>LED RGB</strong>
+
+                            <small>
+                                Informa o estado
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             SIMULADOR
+        ========================================== -->
+
+        <section id="simulador" class="simulator-section">
+
+            <div class="simulator-container">
+
+                <div class="simulator-intro">
+
+                    <span class="section-tag">
+                        04 • EXPERIÊNCIA INTERATIVA
+                    </span>
+
+                    <h2>
+                        Controle a temperatura
+                        <span>da piscina.</span>
+                    </h2>
+
+                    <p>
+                        Arraste o controle e veja como o sistema
+                        responderia a diferentes temperaturas.
+                    </p>
+
+                </div>
+
+
+                <div class="simulator">
+
+                    <div class="pool-preview">
+
+                        <div class="mini-sun">☀️</div>
+
+                        <div class="mini-pool">
+
+                            <div class="pool-ripple"></div>
+
+                            <div class="pool-temperature"
+                                id="sim-temperature">
+                                28°C
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="simulator-controls">
+
+                        <div class="temperature-display">
+
+                            <span>Temperatura atual</span>
+
+                            <strong id="temperature-number">
+                                28°C
+                            </strong>
+
+                        </div>
+
+
+                        <input
+                            type="range"
+                            id="temperature-slider"
+                            min="15"
+                            max="40"
+                            value="28"
+                            aria-label="Temperatura da piscina">
+
+
+                        <div class="temperature-scale">
+
+                            <span>15°C</span>
+                            <span>28°C</span>
+                            <span>40°C</span>
+
+                        </div>
+
+
+                        <div
+                            class="system-status status-warm"
+                            id="system-status">
+
+                            <div class="status-led"
+                                id="status-led"></div>
+
+                            <div>
+
+                                <strong id="status-title">
+                                    Aquecimento em andamento
+                                </strong>
+
+                                <p id="status-description">
+                                    A 
