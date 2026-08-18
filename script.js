@@ -1,20 +1,27 @@
-document.addEventListener("DOMContentLoaded", function () {
+/* =========================================================
+   AQUACEP — SCRIPT.JS
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
 
     /* =====================================================
-       MENU MOBILE
+       1. MENU MOBILE
     ===================================================== */
 
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navLinks = document.querySelector(".nav-links");
+    const menuToggle =
+        document.querySelector(".menu-toggle");
+
+    const navLinks =
+        document.querySelector(".nav-links");
+
 
     if (menuToggle && navLinks) {
 
-        menuToggle.addEventListener("click", function () {
-
-            navLinks.classList.toggle("active");
+        menuToggle.addEventListener("click", () => {
 
             const aberto =
-                navLinks.classList.contains("active");
+                navLinks.classList.toggle("active");
 
             menuToggle.setAttribute(
                 "aria-expanded",
@@ -23,199 +30,212 @@ document.addEventListener("DOMContentLoaded", function () {
 
         });
 
-        navLinks.querySelectorAll("a").forEach(function (link) {
 
-            link.addEventListener("click", function () {
+        navLinks
+            .querySelectorAll("a")
+            .forEach(link => {
 
-                navLinks.classList.remove("active");
+                link.addEventListener("click", () => {
 
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
+                    navLinks.classList.remove("active");
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                });
 
             });
-
-        });
 
     }
 
 
+
     /* =====================================================
-       LED RGB
+       2. LED RGB
     ===================================================== */
 
-    const red = document.getElementById("red-range");
-    const green = document.getElementById("green-range");
-    const blue = document.getElementById("blue-range");
+    const redSlider =
+        document.getElementById("red-range");
 
-    const led = document.getElementById("rgb-light");
-    const core = document.querySelector(".rgb-core");
-    const rgbText = document.getElementById("rgb-value");
+    const greenSlider =
+        document.getElementById("green-range");
+
+    const blueSlider =
+        document.getElementById("blue-range");
+
+
+    const led =
+        document.getElementById("rgb-light");
+
+    const rgbCore =
+        document.querySelector(".rgb-core");
+
+    const rgbValue =
+        document.getElementById("rgb-value");
 
 
     /*
-        Verifica se todos os elementos existem.
+        Só executa se os elementos existirem.
     */
 
-    if (red && green && blue && led) {
+    if (
+        redSlider &&
+        greenSlider &&
+        blueSlider &&
+        led
+    ) {
 
 
         function atualizarLED() {
 
+
             /*
-                Converte os valores das barras
-                para números.
+                Lê as três barrinhas.
             */
 
-            const R = parseInt(red.value, 10) || 0;
-            const G = parseInt(green.value, 10) || 0;
-            const B = parseInt(blue.value, 10) || 0;
+            const vermelho =
+                Number(redSlider.value);
+
+            const verde =
+                Number(greenSlider.value);
+
+            const azul =
+                Number(blueSlider.value);
 
 
             /*
-                Monta a cor.
+                Cria a cor.
             */
 
-            const cor = "rgb(" + R + ", " + G + ", " + B + ")";
+            const cor =
+                `rgb(${vermelho}, ${verde}, ${azul})`;
 
 
             /*
-                Monta o brilho do LED.
+                Calcula o brilho.
+
+                O valor da cor também é usado
+                para o brilho do LED.
             */
 
             const brilho =
-                "0 0 25px rgba(" + R + "," + G + "," + B + ",0.45)," +
-                "0 0 70px rgba(" + R + "," + G + "," + B + ",0.25)";
+                `0 0 25px rgba(${vermelho}, ${verde}, ${azul}, .45),
+                 0 0 70px rgba(${vermelho}, ${verde}, ${azul}, .25)`;
 
 
             /*
-                MUDA A COR DO LED PRINCIPAL
+                AQUI ESTÁ O PRINCIPAL.
+
+                O CSS usa --led-color.
+
+                O JavaScript só altera essa variável.
             */
 
             led.style.setProperty(
-                "background",
-                cor,
-                "important"
+                "--led-color",
+                cor
             );
 
-            led.style.setProperty(
-                "background-color",
-                cor,
-                "important"
-            );
 
             led.style.setProperty(
-                "box-shadow",
-                brilho,
-                "important"
+                "--led-glow",
+                brilho
             );
 
 
             /*
-                MUDA A COR DO NÚCLEO
+                O núcleo também acompanha
+                a mesma variável.
             */
 
-            if (core) {
+            if (rgbCore) {
 
-                core.style.setProperty(
+                rgbCore.style.setProperty(
                     "background",
-                    cor,
-                    "important"
+                    cor
                 );
 
-                core.style.setProperty(
-                    "background-color",
-                    cor,
-                    "important"
-                );
-
-                core.style.setProperty(
+                rgbCore.style.setProperty(
                     "box-shadow",
-                    "0 0 20px " + cor,
-                    "important"
+                    `0 0 18px ${cor}`
                 );
 
             }
 
 
             /*
-                MUDA A VARIÁVEL USADA PELO
-                BRILHO EXTERNO (::before)
+                Mostra o valor RGB.
             */
 
-            led.style.setProperty(
-                "--rgb-color",
-                cor
-            );
+            if (rgbValue) {
 
-
-            /*
-                MOSTRA O VALOR RGB NA TELA
-            */
-
-            if (rgbText) {
-
-                rgbText.textContent =
-                    "RGB(" + R + ", " + G + ", " + B + ")";
+                rgbValue.textContent =
+                    `RGB(${vermelho}, ${verde}, ${azul})`;
 
             }
 
         }
 
 
-        /* =================================================
-           EVENTO PRINCIPAL
-
-           "input" funciona enquanto a barrinha
-           está sendo arrastada.
-
-           Funciona com:
-           - mouse
-           - touch
-           - tela de celular
-           ================================================= */
-
-        red.addEventListener(
-            "input",
-            atualizarLED
-        );
-
-        green.addEventListener(
-            "input",
-            atualizarLED
-        );
-
-        blue.addEventListener(
-            "input",
-            atualizarLED
-        );
-
-
         /*
-            Também adicionamos "change" como
-            segurança para alguns navegadores.
+        =====================================================
+        EVENTO "INPUT"
+
+        Esse é o evento correto para range.
+
+        Ele acontece enquanto a pessoa arrasta:
+
+        🖱️ mouse
+        👆 dedo
+        📱 touchscreen
+        💻 trackpad
+        =====================================================
         */
 
-        red.addEventListener(
+        redSlider.addEventListener(
+            "input",
+            atualizarLED
+        );
+
+
+        greenSlider.addEventListener(
+            "input",
+            atualizarLED
+        );
+
+
+        blueSlider.addEventListener(
+            "input",
+            atualizarLED
+        );
+
+
+        /*
+            "change" fica como segurança.
+        */
+
+        redSlider.addEventListener(
             "change",
             atualizarLED
         );
 
-        green.addEventListener(
+
+        greenSlider.addEventListener(
             "change",
             atualizarLED
         );
 
-        blue.addEventListener(
+
+        blueSlider.addEventListener(
             "change",
             atualizarLED
         );
 
 
         /*
-            Inicializa o LED com os valores
-            que já estão no HTML.
+            Inicializa o LED.
         */
 
         atualizarLED();
@@ -223,74 +243,107 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+
     /* =====================================================
-       SIMULADOR DE TEMPERATURA
+       3. SIMULADOR DE TEMPERATURA
     ===================================================== */
 
     const temperatureSlider =
-        document.getElementById("temperature-slider");
+        document.getElementById(
+            "temperature-slider"
+        );
+
 
     const temperatureNumber =
-        document.getElementById("temperature-number");
+        document.getElementById(
+            "temperature-number"
+        );
+
 
     const simTemperature =
-        document.getElementById("sim-temperature");
+        document.getElementById(
+            "sim-temperature"
+        );
+
 
     const heroTemperature =
-        document.getElementById("hero-temperature");
+        document.getElementById(
+            "hero-temperature"
+        );
+
 
     const systemStatus =
-        document.getElementById("system-status");
+        document.getElementById(
+            "system-status"
+        );
+
 
     const statusLed =
-        document.getElementById("status-led");
+        document.getElementById(
+            "status-led"
+        );
+
 
     const statusTitle =
-        document.getElementById("status-title");
+        document.getElementById(
+            "status-title"
+        );
+
 
     const statusDescription =
-        document.getElementById("status-description");
+        document.getElementById(
+            "status-description"
+        );
+
+
+    const miniPool =
+        document.querySelector(
+            ".mini-pool"
+        );
 
 
     if (temperatureSlider) {
 
+
         function atualizarTemperatura() {
 
+
             const temperatura =
-                parseInt(
-                    temperatureSlider.value,
-                    10
+                Number(
+                    temperatureSlider.value
                 );
 
 
             /*
-                Atualiza os números.
+                Números.
             */
 
             if (temperatureNumber) {
 
                 temperatureNumber.textContent =
-                    temperatura + "°C";
+                    `${temperatura}°C`;
 
             }
+
 
             if (simTemperature) {
 
                 simTemperature.textContent =
-                    temperatura + "°C";
+                    `${temperatura}°C`;
 
             }
+
 
             if (heroTemperature) {
 
                 heroTemperature.textContent =
-                    temperatura + "°C";
+                    `${temperatura}°C`;
 
             }
 
 
             /*
-                Remove os estados anteriores.
+                Limpa estados anteriores.
             */
 
             if (systemStatus) {
@@ -310,13 +363,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (temperatura <= 22) {
 
-                if (systemStatus) {
 
-                    systemStatus.classList.add(
-                        "status-cold"
-                    );
+                systemStatus?.classList.add(
+                    "status-cold"
+                );
 
-                }
 
                 if (statusTitle) {
 
@@ -325,6 +376,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 }
 
+
                 if (statusDescription) {
 
                     statusDescription.textContent =
@@ -332,13 +384,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 }
 
+
                 if (statusLed) {
 
                     statusLed.style.background =
-                        "rgb(40, 130, 255)";
+                        "rgb(40,130,255)";
 
                     statusLed.style.boxShadow =
-                        "0 0 18px rgba(40, 130, 255, 0.7)";
+                        "0 0 18px rgba(40,130,255,.7)";
 
                 }
 
@@ -351,13 +404,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             else if (temperatura <= 29) {
 
-                if (systemStatus) {
 
-                    systemStatus.classList.add(
-                        "status-warm"
-                    );
+                systemStatus?.classList.add(
+                    "status-warm"
+                );
 
-                }
 
                 if (statusTitle) {
 
@@ -366,6 +417,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 }
 
+
                 if (statusDescription) {
 
                     statusDescription.textContent =
@@ -373,13 +425,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 }
 
+
                 if (statusLed) {
 
                     statusLed.style.background =
-                        "rgb(255, 205, 55)";
+                        "rgb(255,205,55)";
 
                     statusLed.style.boxShadow =
-                        "0 0 18px rgba(255, 205, 55, 0.7)";
+                        "0 0 18px rgba(255,205,55,.7)";
 
                 }
 
@@ -392,13 +445,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             else {
 
-                if (systemStatus) {
 
-                    systemStatus.classList.add(
-                        "status-hot"
-                    );
+                systemStatus?.classList.add(
+                    "status-hot"
+                );
 
-                }
 
                 if (statusTitle) {
 
@@ -407,6 +458,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 }
 
+
                 if (statusDescription) {
 
                     statusDescription.textContent =
@@ -414,15 +466,49 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 }
 
+
                 if (statusLed) {
 
                     statusLed.style.background =
-                        "rgb(255, 75, 85)";
+                        "rgb(255,75,85)";
 
                     statusLed.style.boxShadow =
-                        "0 0 18px rgba(255, 75, 85, 0.7)";
+                        "0 0 18px rgba(255,75,85,.7)";
 
                 }
+
+            }
+
+
+            /*
+                Altera a aparência da piscina.
+            */
+
+            if (miniPool) {
+
+
+                const proporcao =
+                    (temperatura - 15) / 20;
+
+
+                const vermelho =
+                    Math.round(
+                        60 + proporcao * 180
+                    );
+
+
+                const azul =
+                    Math.round(
+                        220 - proporcao * 100
+                    );
+
+
+                miniPool.style.background =
+                    `linear-gradient(
+                        135deg,
+                        rgb(${vermelho},180,${azul}),
+                        rgb(${vermelho},${150 + Math.round(proporcao * 40)},190)
+                    )`;
 
             }
 
@@ -430,14 +516,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         /*
-            Funciona durante o movimento
-            da barrinha.
+            Funciona no computador e no celular.
         */
 
         temperatureSlider.addEventListener(
             "input",
             atualizarTemperatura
         );
+
 
         temperatureSlider.addEventListener(
             "change",
@@ -450,22 +536,29 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+
     /* =====================================================
-       ANIMAÇÕES AO ROLAR
+       4. ANIMAÇÕES AO ROLAR
     ===================================================== */
 
     const elementos =
         document.querySelectorAll(
-            ".info-card, .optic-card, .step, .impact-card, .flow-node, .color-science"
+            ".info-card, " +
+            ".optic-card, " +
+            ".step, " +
+            ".impact-card, " +
+            ".flow-node, " +
+            ".color-science"
         );
 
 
     if (
-        elementos.length > 0 &&
+        elementos.length &&
         "IntersectionObserver" in window
     ) {
 
-        elementos.forEach(function (elemento) {
+
+        elementos.forEach(elemento => {
 
             elemento.classList.add(
                 "before-scroll"
@@ -476,21 +569,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const observer =
             new IntersectionObserver(
-                function (entries) {
+                entradas => {
 
-                    entries.forEach(
-                        function (entry) {
+                    entradas.forEach(
+                        entrada => {
 
                             if (
-                                entry.isIntersecting
+                                entrada.isIntersecting
                             ) {
 
-                                entry.target.classList.add(
+                                entrada.target.classList.add(
                                     "show-on-scroll"
                                 );
 
+
                                 observer.unobserve(
-                                    entry.target
+                                    entrada.target
                                 );
 
                             }
@@ -500,24 +594,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 },
                 {
-                    threshold: 0.12
+                    threshold: .12
                 }
             );
 
 
-        elementos.forEach(
-            function (elemento) {
+        elementos.forEach(elemento => {
 
-                observer.observe(elemento);
+            observer.observe(elemento);
 
-            }
-        );
+        });
 
     }
 
 
     console.log(
-        "AquaCEP carregado com sucesso!"
+        "AquaCEP carregado corretamente."
     );
 
 });
