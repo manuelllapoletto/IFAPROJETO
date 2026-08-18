@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================================
-       3. LED RGB
+       3. LED RGB INTERATIVO
     ========================================== */
 
     const redRange =
@@ -66,65 +66,104 @@ document.addEventListener("DOMContentLoaded", function () {
     const rgbLight =
         document.getElementById("rgb-light");
 
-    const rgbValue =
-        document.getElementById("rgb-value");
-
     const rgbCore =
         document.querySelector(".rgb-core");
+
+    const rgbValue =
+        document.getElementById("rgb-value");
 
 
     function atualizarLED() {
 
-        if (
-            !redRange ||
-            !greenRange ||
-            !blueRange
-        ) {
+        if (!redRange || !greenRange || !blueRange) {
             return;
         }
 
-        const red = Number(redRange.value);
-        const green = Number(greenRange.value);
-        const blue = Number(blueRange.value);
+        const red = parseInt(redRange.value, 10);
+        const green = parseInt(greenRange.value, 10);
+        const blue = parseInt(blueRange.value, 10);
 
-        const cor = `rgb(${red}, ${green}, ${blue})`;
+        const corRGB =
+            `rgb(${red}, ${green}, ${blue})`;
+
+        const sombra =
+            `0 0 25px rgba(${red}, ${green}, ${blue}, 0.8),
+             0 0 60px rgba(${red}, ${green}, ${blue}, 0.5),
+             0 0 100px rgba(${red}, ${green}, ${blue}, 0.25)`;
 
 
-        /*
-            Aplica a cor tanto no LED externo
-            quanto no núcleo do LED.
-        */
+        /* =====================================
+           LED PRINCIPAL
+        ===================================== */
 
         if (rgbLight) {
 
             rgbLight.style.setProperty(
+                "--rgb-color",
+                corRGB
+            );
+
+            rgbLight.style.setProperty(
+                "--rgb-shadow",
+                sombra
+            );
+
+            rgbLight.style.setProperty(
+                "background-color",
+                corRGB,
+                "important"
+            );
+
+            rgbLight.style.setProperty(
                 "background",
-                cor,
+                corRGB,
                 "important"
             );
 
             rgbLight.style.setProperty(
                 "box-shadow",
-                `
-                0 0 25px rgba(${red}, ${green}, ${blue}, 0.7),
-                0 0 70px rgba(${red}, ${green}, ${blue}, 0.4)
-                `,
+                sombra,
                 "important"
             );
 
         }
 
+
+        /* =====================================
+           NÚCLEO DO LED
+        ===================================== */
 
         if (rgbCore) {
 
             rgbCore.style.setProperty(
+                "--rgb-color",
+                corRGB
+            );
+
+            rgbCore.style.setProperty(
+                "background-color",
+                corRGB,
+                "important"
+            );
+
+            rgbCore.style.setProperty(
                 "background",
-                cor,
+                corRGB,
+                "important"
+            );
+
+            rgbCore.style.setProperty(
+                "box-shadow",
+                `0 0 15px ${corRGB}`,
                 "important"
             );
 
         }
 
+
+        /* =====================================
+           TEXTO RGB
+        ===================================== */
 
         if (rgbValue) {
 
@@ -136,31 +175,65 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    /* =====================================
+       CONTROLE VERMELHO
+    ===================================== */
+
     if (redRange) {
+
         redRange.addEventListener(
             "input",
             atualizarLED
         );
+
+        redRange.addEventListener(
+            "change",
+            atualizarLED
+        );
+
     }
 
 
+    /* =====================================
+       CONTROLE VERDE
+    ===================================== */
+
     if (greenRange) {
+
         greenRange.addEventListener(
             "input",
             atualizarLED
         );
+
+        greenRange.addEventListener(
+            "change",
+            atualizarLED
+        );
+
     }
 
 
+    /* =====================================
+       CONTROLE AZUL
+    ===================================== */
+
     if (blueRange) {
+
         blueRange.addEventListener(
             "input",
             atualizarLED
         );
+
+        blueRange.addEventListener(
+            "change",
+            atualizarLED
+        );
+
     }
 
 
-    // Cor inicial: vermelha
+    // Inicia o LED usando os valores
+    // definidos nos controles.
 
     atualizarLED();
 
@@ -204,12 +277,9 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-
         const temperatura =
             Number(temperatureSlider.value);
 
-
-        // Atualiza os números
 
         if (temperatureNumber) {
 
@@ -454,6 +524,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     }
+
 
 
     /* =========================================
