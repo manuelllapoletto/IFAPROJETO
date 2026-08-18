@@ -1,14 +1,9 @@
 /* =========================================================
    AQUACEP — STYLE.CSS
-   Projeto Integrador | CEP
-========================================================= */
-
-
-/* =========================================================
-   1. CONFIGURAÇÕES GERAIS
 ========================================================= */
 
 :root {
+
     --blue-50: #f2fbff;
     --blue-100: #e4f6fc;
     --blue-200: #c8edf7;
@@ -33,19 +28,22 @@
     --gray-500: #667781;
     --gray-700: #33454f;
 
-    --shadow-sm: 0 8px 25px rgba(22, 56, 77, 0.07);
-    --shadow-md: 0 15px 40px rgba(22, 56, 77, 0.10);
-    --shadow-lg: 0 25px 60px rgba(22, 56, 77, 0.15);
+    --shadow-sm:
+        0 8px 25px rgba(22, 56, 77, .07);
+
+    --shadow-md:
+        0 15px 40px rgba(22, 56, 77, .10);
+
+    --shadow-lg:
+        0 25px 60px rgba(22, 56, 77, .15);
 
     --radius-sm: 12px;
     --radius-md: 20px;
     --radius-lg: 30px;
 
-    --transition: 0.3s ease;
+    --transition: .3s ease;
 }
 
-
-/* Reset */
 
 * {
     margin: 0;
@@ -87,10 +85,6 @@ img {
 }
 
 
-/* =========================================================
-   2. UTILITÁRIOS
-========================================================= */
-
 .section {
     padding: 110px 7%;
 }
@@ -116,10 +110,10 @@ img {
 
     color: var(--blue-600);
 
-    font-size: 0.78rem;
+    font-size: .78rem;
     font-weight: 800;
 
-    letter-spacing: 0.13em;
+    letter-spacing: .13em;
 
     margin-bottom: 16px;
 }
@@ -146,32 +140,29 @@ h3 {
 
 h2 {
     font-size: clamp(2.2rem, 4vw, 3.5rem);
-    letter-spacing: -0.04em;
+    letter-spacing: -.04em;
 }
 
 
-h1 span,
-h2 span {
+h2 span,
+h1 span {
     color: var(--blue-500);
 }
 
 
 .section-heading p {
     color: var(--gray-500);
-
     margin-top: 20px;
-
     font-size: 1.05rem;
 }
 
 
 /* =========================================================
-   3. HEADER
+   HEADER
 ========================================================= */
 
 .header {
     position: fixed;
-
     top: 0;
     left: 0;
 
@@ -180,12 +171,13 @@ h2 span {
 
     z-index: 1000;
 
-    background: rgba(255, 255, 255, 0.88);
+    background: rgba(255,255,255,.88);
 
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
 
-    border-bottom: 1px solid rgba(22, 56, 77, 0.06);
+    border-bottom:
+        1px solid rgba(22,56,77,.06);
 }
 
 
@@ -204,7 +196,6 @@ h2 span {
 .logo {
     display: flex;
     align-items: center;
-
     gap: 9px;
 
     font-size: 1.35rem;
@@ -225,20 +216,18 @@ h2 span {
     place-items: center;
 
     background: var(--yellow-100);
-
     color: var(--yellow-400);
 
     border-radius: 50%;
 
     box-shadow:
-        0 5px 15px rgba(247, 201, 72, 0.2);
+        0 5px 15px rgba(247,201,72,.2);
 }
 
 
 .nav-links {
     display: flex;
     align-items: center;
-
     gap: 30px;
 
     list-style: none;
@@ -248,7 +237,7 @@ h2 span {
 .nav-links a {
     color: var(--gray-500);
 
-    font-size: 0.9rem;
+    font-size: .9rem;
     font-weight: 700;
 
     transition: var(--transition);
@@ -264,7 +253,6 @@ h2 span {
     display: none;
 
     border: none;
-
     background: transparent;
 
     font-size: 1.6rem;
@@ -276,11 +264,12 @@ h2 span {
 
 
 /* =========================================================
-   4. BOTÕES
+   BOTÕES
 ========================================================= */
 
 .btn {
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
 
@@ -292,7 +281,7 @@ h2 span {
 
     border-radius: 14px;
 
-    font-size: 0.95rem;
+    font-size: .95rem;
     font-weight: 800;
 
     transition: var(--transition);
@@ -301,11 +290,10 @@ h2 span {
 
 .btn-primary {
     background: var(--blue-600);
-
     color: var(--white);
 
     box-shadow:
-        0 10px 25px rgba(22, 139, 171, 0.22);
+        0 10px 25px rgba(22,139,171,.22);
 }
 
 
@@ -315,26 +303,24 @@ h2 span {
     background: var(--blue-700);
 
     box-shadow:
-        0 15px 30px rgba(22, 139, 171, 0.28);
+        0 15px 30px rgba(22,139,171,.28);
 }
 
 
 .btn-secondary {
     background: var(--yellow-100);
-
     color: var(--blue-dark);
 }
 
 
 .btn-secondary:hover {
     transform: translateY(-3px);
-
     background: var(--yellow-200);
 }
 
 
 /* =========================================================
-   5. HERO
+   HERO
 ========================================================= */
 
 .hero {
@@ -383,7 +369,7 @@ h2 span {
 
     background: var(--blue-100);
 
-    opacity: 0.7;
+    opacity: .7;
 }
 
 
@@ -398,10 +384,10 @@ h2 span {
 
     color: var(--blue-600);
 
-    font-size: 0.78rem;
+    font-size: .78rem;
     font-weight: 800;
 
-    letter-spacing: 0.14em;
+    letter-spacing: .14em;
 
     margin-bottom: 20px;
 }
@@ -410,9 +396,9 @@ h2 span {
 .hero h1 {
     max-width: 700px;
 
-    font-size: clamp(3rem, 5.2vw, 5.5rem);
+    font-size: clamp(3rem,5.2vw,5.5rem);
 
-    letter-spacing: -0.06em;
+    letter-spacing: -.06em;
 
     margin-bottom: 25px;
 }
@@ -429,7 +415,6 @@ h2 span {
 
 .hero-buttons {
     display: flex;
-
     flex-wrap: wrap;
 
     gap: 14px;
@@ -439,7 +424,7 @@ h2 span {
 
 
 /* =========================================================
-   6. HERO VISUAL
+   HERO VISUAL
 ========================================================= */
 
 .hero-visual {
@@ -469,14 +454,13 @@ h2 span {
     border-radius: 50%;
 
     background: var(--yellow-200);
-
     color: var(--yellow-400);
 
     font-size: 4rem;
 
     box-shadow:
-        0 0 0 20px rgba(255, 236, 159, 0.25),
-        0 0 60px rgba(247, 201, 72, 0.35);
+        0 0 0 20px rgba(255,236,159,.25),
+        0 0 60px rgba(247,201,72,.35);
 
     animation: sunFloat 4s ease-in-out infinite;
 }
@@ -495,7 +479,9 @@ h2 span {
 }
 
 
-/* Painel solar */
+/* =========================================================
+   PAINEL SOLAR
+========================================================= */
 
 .solar-panel {
     position: absolute;
@@ -525,20 +511,23 @@ h2 span {
 
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(3,1fr);
 
-    grid-template-rows: repeat(3, 1fr);
-
-    border: 1px solid rgba(255, 255, 255, 0.35);
+    border:
+        1px solid rgba(255,255,255,.35);
 }
 
 
 .panel-grid span {
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border:
+        1px solid rgba(255,255,255,.18);
 }
 
 
-/* Piscina */
+/* =========================================================
+   PISCINA
+========================================================= */
 
 .pool {
     position: absolute;
@@ -553,8 +542,8 @@ h2 span {
     background: var(--blue-200);
 
     box-shadow:
-        inset 0 -15px 0 rgba(22, 139, 171, 0.08),
-        0 25px 45px rgba(22, 56, 77, 0.12);
+        inset 0 -15px 0 rgba(22,139,171,.08),
+        0 25px 45px rgba(22,56,77,.12);
 }
 
 
@@ -582,10 +571,10 @@ h2 span {
     width: 130%;
     height: 50px;
 
-    border: 3px solid rgba(255, 255, 255, 0.3);
+    border: 3px solid rgba(255,255,255,.3);
 
     border-color:
-        rgba(255, 255, 255, 0.35)
+        rgba(255,255,255,.35)
         transparent
         transparent
         transparent;
@@ -605,7 +594,6 @@ h2 span {
 .pool-water span:nth-child(2) {
     top: 55%;
     left: -20%;
-
     animation-delay: 1s;
 }
 
@@ -613,7 +601,6 @@ h2 span {
 .pool-water span:nth-child(3) {
     top: 75%;
     left: -5%;
-
     animation-delay: 2s;
 }
 
@@ -630,7 +617,9 @@ h2 span {
 }
 
 
-/* Fluxo de água */
+/* =========================================================
+   FLUXO
+========================================================= */
 
 .water-flow {
     position: absolute;
@@ -649,7 +638,7 @@ h2 span {
 
     transform: rotate(30deg);
 
-    opacity: 0.5;
+    opacity: .5;
 }
 
 
@@ -667,7 +656,9 @@ h2 span {
 }
 
 
-/* Card de temperatura */
+/* =========================================================
+   TEMPERATURA
+========================================================= */
 
 .temperature-card {
     position: absolute;
@@ -676,13 +667,14 @@ h2 span {
     bottom: 120px;
 
     display: flex;
+
     align-items: center;
 
     gap: 12px;
 
     padding: 15px 20px;
 
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255,255,255,.92);
 
     border-radius: 17px;
 
@@ -702,7 +694,7 @@ h2 span {
 
     color: var(--gray-500);
 
-    font-size: 0.7rem;
+    font-size: .7rem;
 }
 
 
@@ -720,7 +712,7 @@ h2 span {
     background: #45c77a;
 
     box-shadow:
-        0 0 0 5px rgba(69, 199, 122, 0.12);
+        0 0 0 5px rgba(69,199,122,.12);
 
     animation: pulse 2s infinite;
 }
@@ -730,19 +722,19 @@ h2 span {
 
     50% {
         transform: scale(1.15);
-        opacity: 0.7;
+        opacity: .7;
     }
 }
 
 
 /* =========================================================
-   7. CARDS DO PROJETO
+   CARDS
 ========================================================= */
 
 .cards-grid {
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4,1fr);
 
     gap: 20px;
 }
@@ -753,7 +745,8 @@ h2 span {
 
     background: var(--white);
 
-    border: 1px solid var(--gray-100);
+    border:
+        1px solid var(--gray-100);
 
     border-radius: var(--radius-md);
 
@@ -809,25 +802,22 @@ h2 span {
 
 .info-card h3 {
     margin-bottom: 12px;
-
     font-size: 1.15rem;
 }
 
 
 .info-card p {
     color: var(--gray-500);
-
-    font-size: 0.92rem;
+    font-size: .92rem;
 }
 
 
 /* =========================================================
-   8. COMO FUNCIONA
+   COMO FUNCIONA
 ========================================================= */
 
 .how-section {
     padding: 110px 7%;
-
     background: var(--blue-50);
 }
 
@@ -840,14 +830,12 @@ h2 span {
     display: flex;
 
     align-items: flex-start;
-
     justify-content: center;
 }
 
 
 .step {
     flex: 1;
-
     text-align: center;
 }
 
@@ -855,7 +843,7 @@ h2 span {
 .step-number {
     color: var(--blue-400);
 
-    font-size: 0.75rem;
+    font-size: .75rem;
     font-weight: 800;
 
     margin-bottom: 10px;
@@ -883,7 +871,6 @@ h2 span {
 
 .step h3 {
     font-size: 1.05rem;
-
     margin-bottom: 8px;
 }
 
@@ -895,13 +882,12 @@ h2 span {
 
     color: var(--gray-500);
 
-    font-size: 0.85rem;
+    font-size: .85rem;
 }
 
 
 .step-line {
     width: 65px;
-
     height: 2px;
 
     margin-top: 55px;
@@ -911,7 +897,7 @@ h2 span {
 
 
 /* =========================================================
-   9. ÓPTICA
+   ÓPTICA
 ========================================================= */
 
 .optical-section {
@@ -922,7 +908,7 @@ h2 span {
 .optics-grid {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
 
     gap: 25px;
 
@@ -937,7 +923,8 @@ h2 span {
 
     border-radius: var(--radius-lg);
 
-    border: 1px solid var(--gray-100);
+    border:
+        1px solid var(--gray-100);
 
     transition: var(--transition);
 }
@@ -945,7 +932,6 @@ h2 span {
 
 .optic-card:hover {
     transform: translateY(-7px);
-
     box-shadow: var(--shadow-md);
 }
 
@@ -956,6 +942,7 @@ h2 span {
     height: 210px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -1036,9 +1023,11 @@ h2 span {
     width: 170px;
     height: 80px;
 
-    border: 4px solid rgba(255, 255, 255, 0.8);
+    border:
+        4px solid rgba(255,255,255,.8);
 
-    background: rgba(255, 255, 255, 0.25);
+    background:
+        rgba(255,255,255,.25);
 
     transform: rotate(-8deg);
 
@@ -1054,7 +1043,7 @@ h2 span {
 .optic-content > span {
     color: var(--blue-500);
 
-    font-size: 0.75rem;
+    font-size: .75rem;
     font-weight: 800;
 }
 
@@ -1069,12 +1058,12 @@ h2 span {
 .optic-content p {
     color: var(--gray-500);
 
-    font-size: 0.9rem;
+    font-size: .9rem;
 }
 
 
 /* =========================================================
-   10. LED RGB
+   LED RGB
 ========================================================= */
 
 .color-science {
@@ -1093,7 +1082,7 @@ h2 span {
     background:
         radial-gradient(
             circle at 75% 50%,
-            rgba(255, 236, 159, 0.45),
+            rgba(255,236,159,.45),
             transparent 25%
         ),
         var(--blue-50);
@@ -1102,19 +1091,16 @@ h2 span {
 
 .color-text p {
     color: var(--gray-500);
-
     margin-top: 18px;
 }
 
 
-/*
-   IMPORTANTE:
-   A cor do LED é controlada pelo JavaScript.
-
-   Não colocar !important aqui.
-*/
+/* =========================================================
+   ÁREA DO LED
+========================================================= */
 
 .rgb-demo {
+
     min-height: 430px;
 
     display: flex;
@@ -1125,85 +1111,171 @@ h2 span {
 
     justify-content: center;
 
-    padding: 30px;
+    padding: 35px 25px;
 
     background: var(--white);
 
     border-radius: var(--radius-lg);
 
     box-shadow: var(--shadow-sm);
+
+    overflow: visible;
 }
 
 
+/*
+    A COR É CONTROLADA POR VARIÁVEIS CSS.
+
+    O JavaScript altera apenas:
+
+    --led-color
+    --led-glow
+    --led-glow-soft
+
+    Isso evita conflito entre CSS e JavaScript.
+*/
+
 .rgb-light {
+
+    --led-color: rgb(255, 0, 0);
+
+    --led-glow:
+        0 0 25px rgba(255,0,0,.45),
+        0 0 70px rgba(255,0,0,.25);
+
     width: 125px;
     height: 125px;
 
-    display: grid;
+    flex-shrink: 0;
 
+    position: relative;
+
+    display: grid;
     place-items: center;
 
     margin-bottom: 20px;
 
     border-radius: 50%;
 
-    /*
-       Cor inicial.
-       O JavaScript modifica isso depois.
-    */
+    background: var(--led-color);
 
-    background: rgb(255, 0, 0);
-
-    box-shadow:
-        0 0 25px rgba(255, 0, 0, 0.35),
-        0 0 70px rgba(255, 0, 0, 0.20);
+    box-shadow: var(--led-glow);
 
     transition:
-        background 0.15s ease,
-        box-shadow 0.15s ease;
+        background .08s linear,
+        box-shadow .08s linear;
+
+    /*
+        Evita que algum elemento invisível
+        bloqueie o toque.
+    */
+
+    pointer-events: none;
+}
+
+
+.rgb-light::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -15px;
+
+    border-radius: 50%;
+
+    background: var(--led-color);
+
+    opacity: .15;
+
+    filter: blur(15px);
+
+    pointer-events: none;
+}
+
+
+.rgb-light::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 35px;
+    height: 20px;
+
+    top: 20px;
+    left: 25px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.45);
+
+    filter: blur(5px);
+
+    pointer-events: none;
 }
 
 
 .rgb-core {
+
     width: 35px;
     height: 35px;
 
+    position: relative;
+
+    z-index: 2;
+
     border-radius: 50%;
 
-    /*
-       Também é alterado pelo JavaScript.
-    */
+    background: var(--led-color);
 
-    background: rgb(255, 0, 0);
+    box-shadow:
+        0 0 18px var(--led-color);
 
-    opacity: 0.7;
+    opacity: .85;
 
     filter: blur(4px);
 
     transition:
-        background 0.15s ease;
+        background .08s linear,
+        box-shadow .08s linear;
 }
 
 
 .rgb-label {
+
     font-weight: 800;
 
     margin-bottom: 30px;
 }
 
 
+/* =========================================================
+   BARRAS RGB
+========================================================= */
+
 .rgb-controls {
+
     width: 80%;
+    max-width: 430px;
 
     display: flex;
 
     flex-direction: column;
 
-    gap: 12px;
+    gap: 16px;
+
+    /*
+        Permite o toque no celular.
+    */
+
+    touch-action: manipulation;
 }
 
 
 .rgb-controls label {
+
     display: grid;
 
     grid-template-columns: 80px 1fr;
@@ -1212,49 +1284,151 @@ h2 span {
 
     gap: 10px;
 
-    font-size: 0.78rem;
+    font-size: .78rem;
 
     font-weight: 700;
 }
 
 
-.rgb-controls input {
+/*
+    CONFIGURAÇÃO DA BARRA.
+
+    -webkit-appearance permite controlar
+      a aparência no Chrome/Android/iPhone.
+
+    touch-action: none permite que o toque
+    seja interpretado corretamente.
+
+    cursor funciona no computador.
+*/
+
+.rgb-controls input[type="range"] {
+
     width: 100%;
 
-    accent-color: var(--blue-500);
+    height: 28px;
+
+    margin: 0;
+
+    padding: 0;
+
+    background: transparent;
 
     cursor: pointer;
+
+    touch-action: none;
+
+    -webkit-tap-highlight-color: transparent;
+
+    -webkit-appearance: none;
+
+    appearance: none;
 }
 
 
-#red-range {
-    accent-color: #ff4b55;
+/* TRACK — CHROME / EDGE / SAFARI */
+
+.rgb-controls input[type="range"]::-webkit-slider-runnable-track {
+
+    width: 100%;
+
+    height: 7px;
+
+    border-radius: 20px;
+
+    background: var(--blue-200);
+
 }
 
 
-#green-range {
-    accent-color: #35c978;
+/* THUMB — CHROME / EDGE / SAFARI */
+
+.rgb-controls input[type="range"]::-webkit-slider-thumb {
+
+    width: 22px;
+    height: 22px;
+
+    margin-top: -7px;
+
+    border: 3px solid white;
+
+    border-radius: 50%;
+
+    background: var(--blue-600);
+
+    box-shadow:
+        0 3px 10px rgba(22,56,77,.25);
+
+    cursor: grab;
+
+    -webkit-appearance: none;
+
+    appearance: none;
 }
 
 
-#blue-range {
-    accent-color: #4285ff;
+.rgb-controls input[type="range"]::-webkit-slider-thumb:active {
+
+    cursor: grabbing;
+
+    transform: scale(1.1);
+}
+
+
+/* FIREFOX */
+
+.rgb-controls input[type="range"]::-moz-range-track {
+
+    width: 100%;
+
+    height: 7px;
+
+    border-radius: 20px;
+
+    background: var(--blue-200);
+}
+
+
+.rgb-controls input[type="range"]::-moz-range-thumb {
+
+    width: 18px;
+    height: 18px;
+
+    border: 3px solid white;
+
+    border-radius: 50%;
+
+    background: var(--blue-600);
+
+    box-shadow:
+        0 3px 10px rgba(22,56,77,.25);
+
+    cursor: grab;
+}
+
+
+.rgb-controls input[type="range"]:focus {
+
+    outline: none;
 }
 
 
 #rgb-value {
+
     margin-top: 20px;
 
     color: var(--gray-500);
 
     font-family: monospace;
 
-    font-size: 0.8rem;
+    font-size: .8rem;
+
+    min-height: 18px;
 }
 
 
 /* =========================================================
-   11. ROBÓTICA
+   ROBÓTICA
 ========================================================= */
 
 .robotics-section {
@@ -1263,6 +1437,7 @@ h2 span {
 
 
 .flowchart {
+
     max-width: 850px;
 
     margin: auto;
@@ -1272,6 +1447,7 @@ h2 span {
 
 
 .flow-node {
+
     width: 210px;
 
     margin: auto;
@@ -1280,7 +1456,8 @@ h2 span {
 
     background: var(--white);
 
-    border: 1px solid var(--blue-100);
+    border:
+        1px solid var(--blue-100);
 
     border-radius: 22px;
 
@@ -1291,6 +1468,7 @@ h2 span {
 
 
 .flow-node:hover {
+
     transform: scale(1.04);
 
     box-shadow: var(--shadow-md);
@@ -1298,6 +1476,7 @@ h2 span {
 
 
 .flow-node > span {
+
     display: block;
 
     font-size: 2rem;
@@ -1307,6 +1486,7 @@ h2 span {
 
 
 .flow-node strong {
+
     display: block;
 
     font-size: 1rem;
@@ -1314,13 +1494,15 @@ h2 span {
 
 
 .flow-node small {
+
     color: var(--gray-500);
 
-    font-size: 0.78rem;
+    font-size: .78rem;
 }
 
 
 .flow-arrow {
+
     margin: 13px 0;
 
     color: var(--blue-400);
@@ -1332,6 +1514,7 @@ h2 span {
 
 
 .flow-branches {
+
     display: grid;
 
     grid-template-columns: 1fr 1fr;
@@ -1344,21 +1527,24 @@ h2 span {
 }
 
 
-.branch .flow-node {
+.flow-branches .flow-node {
+
     width: 180px;
 }
 
 
 .rgb-node {
+
     border-color: #ffc4d2;
 }
 
 
 /* =========================================================
-   12. SIMULADOR
+   SIMULADOR
 ========================================================= */
 
 .simulator-section {
+
     padding: 110px 7%;
 
     background:
@@ -1373,6 +1559,7 @@ h2 span {
 
 
 .simulator-container {
+
     max-width: 1100px;
 
     margin: auto;
@@ -1380,6 +1567,7 @@ h2 span {
 
 
 .simulator-intro {
+
     max-width: 650px;
 
     margin-bottom: 45px;
@@ -1387,26 +1575,30 @@ h2 span {
 
 
 .simulator-intro .section-tag {
+
     color: var(--yellow-200);
 }
 
 
 .simulator-intro h2 span {
+
     color: var(--yellow-200);
 }
 
 
 .simulator-intro p {
-    color: rgba(255, 255, 255, 0.75);
+
+    color: rgba(255,255,255,.75);
 
     margin-top: 18px;
 }
 
 
 .simulator {
+
     display: grid;
 
-    grid-template-columns: 0.9fr 1.1fr;
+    grid-template-columns: .9fr 1.1fr;
 
     gap: 40px;
 
@@ -1414,17 +1606,17 @@ h2 span {
 
     border-radius: var(--radius-lg);
 
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255,255,255,.1);
 
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border:
+        1px solid rgba(255,255,255,.15);
 
     backdrop-filter: blur(10px);
 }
 
 
-/* Piscina */
-
 .pool-preview {
+
     position: relative;
 
     min-height: 380px;
@@ -1437,13 +1629,14 @@ h2 span {
 
     border-radius: 25px;
 
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255,255,255,.08);
 
     overflow: hidden;
 }
 
 
 .mini-sun {
+
     position: absolute;
 
     top: 25px;
@@ -1454,6 +1647,7 @@ h2 span {
 
 
 .mini-pool {
+
     width: 90%;
     height: 200px;
 
@@ -1471,14 +1665,15 @@ h2 span {
         );
 
     box-shadow:
-        inset 0 -15px 0 rgba(0, 0, 0, 0.08),
-        0 20px 40px rgba(0, 0, 0, 0.15);
+        inset 0 -15px 0 rgba(0,0,0,.08),
+        0 20px 40px rgba(0,0,0,.15);
 
-    transition: 0.4s ease;
+    transition: .4s ease;
 }
 
 
 .pool-temperature {
+
     position: relative;
 
     z-index: 2;
@@ -1490,25 +1685,26 @@ h2 span {
     color: var(--white);
 
     text-shadow:
-        0 3px 10px rgba(0, 0, 0, 0.15);
+        0 3px 10px rgba(0,0,0,.15);
 }
 
 
 .pool-ripple {
+
     position: absolute;
 
     width: 260px;
     height: 70px;
 
-    border: 2px solid rgba(255, 255, 255, 0.35);
+    border:
+        2px solid rgba(255,255,255,.35);
 
     border-radius: 50%;
 }
 
 
-/* Controles */
-
 .simulator-controls {
+
     display: flex;
 
     flex-direction: column;
@@ -1518,6 +1714,7 @@ h2 span {
 
 
 .temperature-display {
+
     display: flex;
 
     align-items: flex-end;
@@ -1529,13 +1726,15 @@ h2 span {
 
 
 .temperature-display span {
-    color: rgba(255, 255, 255, 0.7);
 
-    font-size: 0.85rem;
+    color: rgba(255,255,255,.7);
+
+    font-size: .85rem;
 }
 
 
 .temperature-display strong {
+
     font-size: 3rem;
 
     line-height: 1;
@@ -1543,32 +1742,91 @@ h2 span {
 
 
 #temperature-slider {
+
     width: 100%;
+
+    height: 28px;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    touch-action: none;
+
+    -webkit-appearance: none;
+
+    appearance: none;
+}
+
+
+#temperature-slider::-webkit-slider-runnable-track {
 
     height: 7px;
 
-    accent-color: var(--yellow-300);
+    border-radius: 20px;
 
-    cursor: pointer;
+    background: rgba(255,255,255,.35);
+}
+
+
+#temperature-slider::-webkit-slider-thumb {
+
+    width: 22px;
+    height: 22px;
+
+    margin-top: -7px;
+
+    border: 3px solid white;
+
+    border-radius: 50%;
+
+    background: var(--yellow-300);
+
+    -webkit-appearance: none;
+
+    appearance: none;
+}
+
+
+#temperature-slider::-moz-range-track {
+
+    height: 7px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.35);
+}
+
+
+#temperature-slider::-moz-range-thumb {
+
+    width: 18px;
+    height: 18px;
+
+    border: 3px solid white;
+
+    border-radius: 50%;
+
+    background: var(--yellow-300);
 }
 
 
 .temperature-scale {
+
     display: flex;
 
     justify-content: space-between;
 
     margin-top: 8px;
 
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(255,255,255,.55);
 
-    font-size: 0.75rem;
+    font-size: .75rem;
 }
 
 
-/* Status */
-
 .system-status {
+
     display: flex;
 
     align-items: center;
@@ -1581,97 +1839,123 @@ h2 span {
 
     border-radius: 18px;
 
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255,255,255,.1);
 
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border:
+        1px solid rgba(255,255,255,.12);
 
-    transition: 0.3s ease;
+    transition:
+        background .3s ease,
+        border-color .3s ease;
 }
 
 
 .status-led {
-    width: 18px;
-    height: 18px;
+
+    width: 20px;
+    height: 20px;
 
     flex-shrink: 0;
 
     border-radius: 50%;
 
-    background: rgb(40, 130, 255);
+    background: rgb(40,130,255);
 
     box-shadow:
-        0 0 18px rgba(40, 130, 255, 0.7);
+        0 0 18px rgba(40,130,255,.7);
+
+    transition:
+        background .3s ease,
+        box-shadow .3s ease;
 }
 
 
-.system-status strong {
+.status-content {
+
+    flex: 1;
+}
+
+
+.status-content strong {
+
     display: block;
+
+    margin-bottom: 3px;
 
     font-size: 1rem;
 }
 
 
-.system-status p {
-    margin-top: 4px;
+.status-content p {
 
-    color: rgba(255, 255, 255, 0.68);
+    color: rgba(255,255,255,.7);
 
-    font-size: 0.82rem;
+    font-size: .8rem;
 }
 
 
-/* Estados do sistema */
+.status-cold {
 
-.system-status.status-cold {
-    border-color: rgba(40, 130, 255, 0.35);
+    background:
+        rgba(40,130,255,.13);
+
+    border-color:
+        rgba(40,130,255,.25);
 }
 
 
-.system-status.status-warm {
-    border-color: rgba(255, 205, 55, 0.35);
+.status-warm {
+
+    background:
+        rgba(255,205,55,.13);
+
+    border-color:
+        rgba(255,205,55,.25);
 }
 
 
-.system-status.status-hot {
-    border-color: rgba(255, 75, 85, 0.35);
+.status-hot {
+
+    background:
+        rgba(255,75,85,.13);
+
+    border-color:
+        rgba(255,75,85,.25);
 }
 
 
 /* =========================================================
-   13. SUSTENTABILIDADE
+   SUSTENTABILIDADE
 ========================================================= */
 
-.sustainability-section {
-    padding: 110px 7%;
+.impact-grid {
 
-    background: var(--white);
-}
-
-
-.sustainability-grid {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
 
     gap: 25px;
 }
 
 
 .impact-card {
-    padding: 35px 30px;
 
-    border-radius: var(--radius-md);
+    padding: 35px;
 
     background: var(--gray-50);
 
-    border: 1px solid var(--gray-100);
+    border:
+        1px solid var(--gray-100);
+
+    border-radius: var(--radius-md);
 
     transition: var(--transition);
 }
 
 
 .impact-card:hover {
-    transform: translateY(-7px);
+
+    transform: translateY(-6px);
 
     box-shadow: var(--shadow-md);
 
@@ -1679,54 +1963,121 @@ h2 span {
 }
 
 
-.impact-icon {
-    width: 60px;
-    height: 60px;
-
-    display: grid;
-
-    place-items: center;
-
-    margin-bottom: 22px;
-
-    border-radius: 18px;
-
-    background: var(--blue-100);
-
-    font-size: 1.8rem;
-}
-
-
 .impact-card h3 {
-    margin-bottom: 10px;
+
+    margin: 15px 0 10px;
 
     font-size: 1.2rem;
 }
 
 
 .impact-card p {
+
     color: var(--gray-500);
 
-    font-size: 0.9rem;
+    font-size: .9rem;
 }
 
 
 /* =========================================================
-   14. ANIMAÇÕES AO ROLAR
+   FOOTER
+========================================================= */
+
+.footer {
+
+    padding: 55px 7%;
+
+    background: var(--blue-dark);
+
+    color: var(--white);
+
+    text-align: center;
+}
+
+
+.footer p {
+
+    color: rgba(255,255,255,.65);
+
+    font-size: .85rem;
+}
+
+
+.footer strong {
+
+    color: var(--yellow-300);
+}
+
+
+.footer-content {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 30px;
+
+    max-width: 1100px;
+
+    margin: auto;
+}
+
+
+.footer-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    color: rgba(255,255,255,.65);
+
+    font-size: .8rem;
+}
+
+
+.footer-bottom {
+
+    max-width: 1100px;
+
+    margin: 35px auto 0;
+
+    padding-top: 25px;
+
+    border-top:
+        1px solid rgba(255,255,255,.1);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: rgba(255,255,255,.5);
+
+    font-size: .75rem;
+}
+
+
+/* =========================================================
+   ANIMAÇÕES
 ========================================================= */
 
 .before-scroll {
+
     opacity: 0;
 
-    transform: translateY(25px);
+    transform: translateY(30px);
 
     transition:
-        opacity 0.7s ease,
-        transform 0.7s ease;
+        opacity .7s ease,
+        transform .7s ease;
 }
 
 
 .show-on-scroll {
+
     opacity: 1;
 
     transform: translateY(0);
@@ -1734,61 +2085,101 @@ h2 span {
 
 
 /* =========================================================
-   15. RODAPÉ
+   RESPONSIVIDADE
 ========================================================= */
 
-.footer {
-    padding: 50px 7%;
+@media (max-width: 1100px) {
 
-    background: var(--blue-dark);
-
-    color: var(--white);
-}
-
-
-.footer-container {
-    max-width: 1100px;
-
-    margin: auto;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 30px;
-}
-
-
-.footer-logo {
-    font-size: 1.2rem;
-
-    font-weight: 800;
-}
-
-
-.footer p {
-    color: rgba(255, 255, 255, 0.6);
-
-    font-size: 0.8rem;
-}
-
-
-/* =========================================================
-   16. RESPONSIVIDADE — TABLET
-========================================================= */
-
-@media (max-width: 1050px) {
+    .cards-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
 
     .hero {
+        gap: 30px;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.8rem,5vw,4.5rem);
+    }
+
+    .color-science {
+        gap: 40px;
+        padding: 40px;
+    }
+
+}
+
+
+@media (max-width: 850px) {
+
+    .navbar {
+        width: 90%;
+    }
+
+
+    .menu-toggle {
+        display: block;
+    }
+
+
+    .nav-links {
+
+        position: absolute;
+
+        top: 78px;
+        left: 5%;
+
+        width: 90%;
+
+        display: none;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 0;
+
+        padding: 15px;
+
+        background: rgba(255,255,255,.98);
+
+        border-radius: 0 0 20px 20px;
+
+        box-shadow: var(--shadow-md);
+    }
+
+
+    .nav-links.active {
+        display: flex;
+    }
+
+
+    .nav-links li {
+        width: 100%;
+    }
+
+
+    .nav-links a {
+        display: block;
+        padding: 13px 15px;
+    }
+
+
+    .hero {
+
         grid-template-columns: 1fr;
 
+        padding-top: 130px;
+    }
+
+
+    .hero-content {
         text-align: center;
     }
 
 
     .hero-content > p {
+
         margin-left: auto;
         margin-right: auto;
     }
@@ -1800,23 +2191,12 @@ h2 span {
 
 
     .hero-visual {
-        max-width: 700px;
-
-        width: 100%;
-
-        margin: auto;
-    }
-
-
-    .cards-grid {
-        grid-template-columns: repeat(2, 1fr);
+        min-height: 480px;
     }
 
 
     .color-science {
         grid-template-columns: 1fr;
-
-        gap: 40px;
     }
 
 
@@ -1825,52 +2205,38 @@ h2 span {
     }
 
 
-    .sustainability-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .optics-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .impact-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .footer-content {
+        flex-direction: column;
     }
 
 }
 
 
-/* =========================================================
-   17. RESPONSIVIDADE — TABLET MENOR
-========================================================= */
+@media (max-width: 650px) {
 
-@media (max-width: 800px) {
-
-    .nav-links {
-        position: absolute;
-
-        top: 78px;
-        left: 0;
-
-        width: 100%;
-
-        padding: 25px 7%;
-
-        display: none;
-
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 18px;
-
-        background: rgba(255, 255, 255, 0.97);
-
-        box-shadow: var(--shadow-md);
-
-        border-top: 1px solid var(--gray-100);
+    .section {
+        padding: 80px 6%;
     }
 
 
-    .nav-links.active {
-        display: flex;
+    .how-section,
+    .simulator-section {
+        padding: 80px 6%;
     }
 
 
-    .menu-toggle {
-        display: block;
+    .cards-grid {
+        grid-template-columns: 1fr;
     }
 
 
@@ -1879,273 +2245,209 @@ h2 span {
     }
 
 
-    .steps {
-        flex-direction: column;
-
-        align-items: center;
-
-        gap: 25px;
-    }
-
-
-    .step {
-        width: 100%;
-    }
-
-
-    .step-line {
-        width: 2px;
-
-        height: 35px;
-
-        margin: 0;
-
-        background: var(--blue-200);
-    }
-
-
-    .flow-branches {
+    .impact-grid {
         grid-template-columns: 1fr;
-
-        gap: 30px;
-    }
-
-
-    .color-science {
-        padding: 35px 25px;
-    }
-
-}
-
-
-/* =========================================================
-   18. RESPONSIVIDADE — CELULAR
-========================================================= */
-
-@media (max-width: 600px) {
-
-    .section,
-    .how-section,
-    .simulator-section,
-    .sustainability-section {
-        padding: 80px 5%;
     }
 
 
     .hero {
-        padding:
-            130px
-            5%
-            70px;
+        padding-left: 6%;
+        padding-right: 6%;
     }
 
 
     .hero h1 {
-        font-size: clamp(2.5rem, 12vw, 4rem);
-    }
-
-
-    .hero-visual {
-        min-height: 420px;
-    }
-
-
-    .solar-panel {
-        width: 180px;
-        height: 115px;
-
-        left: 3%;
-    }
-
-
-    .sun {
-        width: 75px;
-        height: 75px;
-
-        right: 5px;
-
         font-size: 2.8rem;
     }
 
 
-    .pool {
-        width: 95%;
+    .solar-panel {
 
-        height: 165px;
+        width: 190px;
+        height: 125px;
+
+        left: 2%;
+    }
+
+
+    .sun {
+
+        width: 80px;
+        height: 80px;
+
+        right: 10px;
+
+        font-size: 3rem;
+    }
+
+
+    .pool {
+
+        width: 95%;
+        height: 175px;
     }
 
 
     .temperature-card {
+
         right: 0;
+        bottom: 100px;
 
-        bottom: 90px;
-
-        padding: 11px 14px;
+        padding: 12px 15px;
     }
 
 
-    .cards-grid {
-        grid-template-columns: 1fr;
+    .steps {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 15px;
+    }
+
+
+    .step-line {
+
+        width: 2px;
+        height: 35px;
+
+        margin: 0;
     }
 
 
     .color-science {
-        padding: 25px 18px;
+
+        padding: 30px 20px;
     }
 
 
     .rgb-demo {
-        min-height: 400px;
 
-        padding: 25px 15px;
+        min-height: 420px;
+
+        padding: 30px 15px;
     }
 
 
+    /*
+        No celular as barras ocupam
+        praticamente toda a largura.
+        Isso deixa o controle muito mais
+        fácil de tocar.
+    */
+
     .rgb-controls {
-        width: 95%;
+
+        width: 100%;
+
+        max-width: 100%;
     }
 
 
     .rgb-controls label {
+
         grid-template-columns: 70px 1fr;
+
+        gap: 12px;
+    }
+
+
+    .rgb-controls input[type="range"] {
+
+        height: 34px;
     }
 
 
     .simulator {
-        padding: 20px;
 
-        gap: 25px;
+        padding: 20px;
     }
 
 
     .pool-preview {
+
         min-height: 300px;
     }
 
 
     .mini-pool {
-        width: 95%;
 
-        height: 150px;
-    }
-
-
-    .pool-temperature {
-        font-size: 2.1rem;
+        height: 160px;
     }
 
 
     .temperature-display strong {
+
         font-size: 2.4rem;
     }
 
 
-    .sustainability-grid {
-        grid-template-columns: 1fr;
-    }
+    .footer-bottom {
 
-
-    .footer-container {
         flex-direction: column;
 
-        text-align: center;
+        gap: 10px;
     }
 
 }
 
 
-/* =========================================================
-   19. ACESSIBILIDADE
-========================================================= */
+@media (max-width: 430px) {
 
-button:focus-visible,
-a:focus-visible,
-input:focus-visible {
-    outline: 3px solid var(--yellow-400);
-
-    outline-offset: 3px;
-}
-
-/* =========================================================
-   COMPATIBILIDADE COM CELULAR
-========================================================= */
-
-@media (max-width: 768px) {
-
-    .rgb-demo {
-        position: relative;
-        z-index: 10;
-        touch-action: manipulation;
+    .hero h1 {
+        font-size: 2.45rem;
     }
 
-    .rgb-controls {
-        position: relative;
-        z-index: 20;
-        width: 90%;
-    }
 
-    .rgb-controls label {
-        position: relative;
-        z-index: 21;
-    }
-
-    .rgb-controls input[type="range"] {
-        position: relative;
-        z-index: 22;
+    .btn {
         width: 100%;
-        min-height: 35px;
-        cursor: pointer;
-        touch-action: pan-y;
-        -webkit-appearance: none;
-        appearance: none;
     }
 
-    .rgb-controls input[type="range"]::-webkit-slider-runnable-track {
-        height: 7px;
-        border-radius: 10px;
-        background: #c8edf7;
+
+    .hero-buttons {
+        width: 100%;
     }
 
-    .rgb-controls input[type="range"]::-moz-range-track {
-        height: 7px;
-        border-radius: 10px;
-        background: #c8edf7;
+
+    .hero-visual {
+        min-height: 410px;
     }
 
-    .rgb-controls input[type="range"]::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 24px;
-        height: 24px;
-        margin-top: -8px;
-        border-radius: 50%;
-        border: none;
-        background: #168bab;
-        cursor: pointer;
+
+    .solar-panel {
+
+        width: 160px;
+        height: 105px;
+
+        top: 100px;
     }
 
-    .rgb-controls input[type="range"]::-moz-range-thumb {
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        border: none;
-        background: #168bab;
-        cursor: pointer;
+
+    .pool {
+        bottom: 20px;
     }
 
-    .rgb-light,
-    .rgb-core,
-    .rgb-label {
-        pointer-events: none;
+
+    .temperature-card {
+
+        transform: scale(.9);
+
+        transform-origin: right bottom;
     }
 
-    .btn,
-    .nav-links a,
-    .menu-toggle {
-        touch-action: manipulation;
+
+    .rgb-light {
+
+        width: 105px;
+        height: 105px;
     }
+
+
+    .rgb-core {
+
+        width: 30px;
+        height: 30px;
+    }
+
 }
-
-/* =========================================================
-   FIM DO AQUACEP
-========================================================= */
