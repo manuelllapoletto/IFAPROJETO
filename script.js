@@ -1,2194 +1,637 @@
 /* =========================================================
-   AQUACEP — STYLE.CSS
+   AQUACEP — SCRIPT.JS
    Projeto Integrador | CEP
 ========================================================= */
 
 
 /* =========================================================
-   1. CONFIGURAÇÕES GERAIS
+   1. MENU MOBILE
 ========================================================= */
 
-:root {
-    --blue-50: #f2fbff;
-    --blue-100: #e4f6fc;
-    --blue-200: #c8edf7;
-    --blue-300: #9eddec;
-    --blue-400: #66c8df;
-    --blue-500: #35acc9;
-    --blue-600: #168bab;
-    --blue-700: #126d88;
-    --blue-dark: #16384d;
+const menuToggle = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
 
-    --yellow-50: #fffdf2;
-    --yellow-100: #fff7cc;
-    --yellow-200: #ffec9f;
-    --yellow-300: #ffdc68;
-    --yellow-400: #f7c948;
+if (menuToggle && navLinks) {
 
-    --white: #ffffff;
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
 
-    --gray-50: #f8fafb;
-    --gray-100: #eef3f5;
-    --gray-300: #cbd6db;
-    --gray-500: #667781;
-    --gray-700: #33454f;
+        const aberto = navLinks.classList.contains("active");
 
-    --shadow-sm:
-        0 8px 25px rgba(22, 56, 77, 0.07);
-
-    --shadow-md:
-        0 15px 40px rgba(22, 56, 77, 0.10);
-
-    --shadow-lg:
-        0 25px 60px rgba(22, 56, 77, 0.15);
-
-    --radius-sm: 12px;
-    --radius-md: 20px;
-    --radius-lg: 30px;
-
-    --transition: 0.3s ease;
-}
-
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 90px;
-}
-
-
-body {
-    font-family: "Nunito", sans-serif;
-    background: var(--white);
-    color: var(--blue-dark);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-
-button,
-input {
-    font-family: inherit;
-}
-
-
-img {
-    max-width: 100%;
-    display: block;
-}
-
-
-/* =========================================================
-   2. UTILITÁRIOS
-========================================================= */
-
-.section {
-    padding: 110px 7%;
-}
-
-
-.section-heading {
-    max-width: 750px;
-    margin-bottom: 60px;
-}
-
-
-.section-heading.centered {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-.section-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-
-    color: var(--blue-600);
-
-    font-size: 0.78rem;
-    font-weight: 800;
-
-    letter-spacing: 0.13em;
-
-    margin-bottom: 16px;
-}
-
-
-.section-tag::before {
-    content: "";
-
-    width: 25px;
-    height: 3px;
-
-    border-radius: 10px;
-
-    background: var(--yellow-400);
-}
-
-
-h1,
-h2,
-h3 {
-    line-height: 1.15;
-}
-
-
-h2 {
-    font-size: clamp(2.2rem, 4vw, 3.5rem);
-    letter-spacing: -0.04em;
-}
-
-
-h2 span,
-h1 span {
-    color: var(--blue-500);
-}
-
-
-.section-heading p {
-    color: var(--gray-500);
-
-    margin-top: 20px;
-
-    font-size: 1.05rem;
-}
-
-
-/* =========================================================
-   3. HEADER
-========================================================= */
-
-.header {
-    position: fixed;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 78px;
-
-    z-index: 1000;
-
-    background: rgba(255, 255, 255, 0.88);
-
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-
-    border-bottom:
-        1px solid rgba(22, 56, 77, 0.06);
-}
-
-
-.navbar {
-    width: 86%;
-    height: 100%;
-
-    margin: auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-
-.logo {
-    display: flex;
-    align-items: center;
-
-    gap: 9px;
-
-    font-size: 1.35rem;
-    font-weight: 800;
-}
-
-
-.logo > span:last-child > span {
-    color: var(--blue-500);
-}
-
-
-.logo-icon {
-    width: 38px;
-    height: 38px;
-
-    display: grid;
-    place-items: center;
-
-    background: var(--yellow-100);
-
-    color: var(--yellow-400);
-
-    border-radius: 50%;
-
-    box-shadow:
-        0 5px 15px rgba(247, 201, 72, 0.2);
-}
-
-
-.nav-links {
-    display: flex;
-    align-items: center;
-
-    gap: 30px;
-
-    list-style: none;
-}
-
-
-.nav-links a {
-    color: var(--gray-500);
-
-    font-size: 0.9rem;
-    font-weight: 700;
-
-    transition: var(--transition);
-}
-
-
-.nav-links a:hover {
-    color: var(--blue-600);
-}
-
-
-.menu-toggle {
-    display: none;
-
-    border: none;
-
-    background: transparent;
-
-    font-size: 1.6rem;
-
-    color: var(--blue-dark);
-
-    cursor: pointer;
-}
-
-
-/* =========================================================
-   4. BOTÕES
-========================================================= */
-
-.btn {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 12px;
-
-    min-height: 52px;
-
-    padding: 0 25px;
-
-    border-radius: 14px;
-
-    font-size: 0.95rem;
-    font-weight: 800;
-
-    transition: var(--transition);
-}
-
-
-.btn-primary {
-    background: var(--blue-600);
-
-    color: var(--white);
-
-    box-shadow:
-        0 10px 25px rgba(22, 139, 171, 0.22);
-}
-
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-
-    background: var(--blue-700);
-
-    box-shadow:
-        0 15px 30px rgba(22, 139, 171, 0.28);
-}
-
-
-.btn-secondary {
-    background: var(--yellow-100);
-
-    color: var(--blue-dark);
-}
-
-
-.btn-secondary:hover {
-    transform: translateY(-3px);
-
-    background: var(--yellow-200);
-}
-
-
-/* =========================================================
-   5. HERO
-========================================================= */
-
-.hero {
-    min-height: 100vh;
-
-    padding: 150px 7% 90px;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    align-items: center;
-
-    gap: 60px;
-
-    position: relative;
-
-    overflow: hidden;
-
-    background:
-        radial-gradient(
-            circle at 85% 20%,
-            var(--yellow-100),
-            transparent 25%
-        ),
-        linear-gradient(
-            135deg,
-            var(--blue-50),
-            var(--white)
+        menuToggle.setAttribute(
+            "aria-expanded",
+            aberto ? "true" : "false"
         );
-}
+    });
 
 
-.hero::before {
-    content: "";
+    // Fecha o menu quando clicar em um link
+    navLinks.querySelectorAll("a").forEach(link => {
 
-    position: absolute;
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
 
-    width: 500px;
-    height: 500px;
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+        });
 
-    right: -200px;
-    bottom: -250px;
+    });
 
-    border-radius: 50%;
-
-    background: var(--blue-100);
-
-    opacity: 0.7;
-}
-
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-}
-
-
-.eyebrow {
-    display: inline-block;
-
-    color: var(--blue-600);
-
-    font-size: 0.78rem;
-    font-weight: 800;
-
-    letter-spacing: 0.14em;
-
-    margin-bottom: 20px;
-}
-
-
-.hero h1 {
-    max-width: 700px;
-
-    font-size: clamp(3rem, 5.2vw, 5.5rem);
-
-    letter-spacing: -0.06em;
-
-    margin-bottom: 25px;
-}
-
-
-.hero-content > p {
-    max-width: 600px;
-
-    color: var(--gray-500);
-
-    font-size: 1.08rem;
-}
-
-
-.hero-buttons {
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 14px;
-
-    margin-top: 35px;
 }
 
 
 /* =========================================================
-   6. HERO VISUAL
+   2. ANIMAÇÕES AO ROLAR
 ========================================================= */
 
-.hero-visual {
-    position: relative;
+const elementosAnimados =
+    document.querySelectorAll(".before-scroll");
 
-    min-height: 530px;
 
-    display: flex;
+if (elementosAnimados.length > 0) {
 
-    align-items: center;
-    justify-content: center;
+    const observer = new IntersectionObserver(
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add(
+                        "show-on-scroll"
+                    );
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.15
+        }
+    );
+
+
+    elementosAnimados.forEach(elemento => {
+        observer.observe(elemento);
+    });
+
 }
 
 
-.sun {
-    position: absolute;
+/* =========================================================
+   3. LED RGB
+========================================================= */
 
-    top: 15px;
-    right: 45px;
+const redSlider =
+    document.getElementById("red");
 
-    width: 105px;
-    height: 105px;
+const greenSlider =
+    document.getElementById("green");
 
-    display: grid;
-    place-items: center;
+const blueSlider =
+    document.getElementById("blue");
 
-    border-radius: 50%;
+const rgbLight =
+    document.querySelector(".rgb-light");
 
-    background: var(--yellow-200);
+const rgbCore =
+    document.querySelector(".rgb-core");
 
-    color: var(--yellow-400);
-
-    font-size: 4rem;
-
-    box-shadow:
-        0 0 0 20px rgba(255, 236, 159, 0.25),
-        0 0 60px rgba(247, 201, 72, 0.35);
-
-    animation: sunFloat 4s ease-in-out infinite;
-}
+const rgbValue =
+    document.getElementById("rgb-value");
 
 
-@keyframes sunFloat {
+function atualizarLED() {
 
-    0%,
-    100% {
-        transform: translateY(0);
+    // Se os controles não existirem, não faz nada
+    if (
+        !redSlider ||
+        !greenSlider ||
+        !blueSlider
+    ) {
+        return;
     }
 
-    50% {
-        transform: translateY(-10px);
-    }
-}
 
+    const r = Number(redSlider.value);
+    const g = Number(greenSlider.value);
+    const b = Number(blueSlider.value);
 
-/* =========================================================
-   PAINEL SOLAR
-========================================================= */
 
-.solar-panel {
-    position: absolute;
+    const rgb =
+        `rgb(${r}, ${g}, ${b})`;
 
-    top: 120px;
-    left: 10%;
 
-    width: 250px;
-    height: 160px;
+    const brilho =
+        Math.max(r, g, b);
 
-    padding: 10px;
-
-    transform: rotate(-8deg);
-
-    border: 8px solid #b5c5cc;
-
-    border-radius: 8px;
-
-    background: #1d6075;
-
-    box-shadow: var(--shadow-lg);
-}
-
-
-.panel-grid {
-    height: 100%;
-
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    grid-template-rows: repeat(3, 1fr);
-
-    border:
-        1px solid rgba(255, 255, 255, 0.35);
-}
-
-
-.panel-grid span {
-    border:
-        1px solid rgba(255, 255, 255, 0.18);
-}
-
-
-/* =========================================================
-   PISCINA
-========================================================= */
-
-.pool {
-    position: absolute;
-
-    bottom: 30px;
-
-    width: 80%;
-    height: 210px;
-
-    border-radius: 50%;
-
-    background: var(--blue-200);
-
-    box-shadow:
-        inset 0 -15px 0 rgba(22, 139, 171, 0.08),
-        0 25px 45px rgba(22, 56, 77, 0.12);
-}
-
-
-.pool-water {
-    position: absolute;
-
-    inset: 14px;
-
-    border-radius: 50%;
-
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--blue-300),
-            var(--blue-500)
-        );
-}
-
-
-.pool-water span {
-    position: absolute;
-
-    width: 130%;
-    height: 50px;
-
-    border: 3px solid rgba(255, 255, 255, 0.3);
-
-    border-color:
-        rgba(255, 255, 255, 0.35)
-        transparent
-        transparent
-        transparent;
-
-    border-radius: 50%;
-
-    animation: wave 5s linear infinite;
-}
-
-
-.pool-water span:nth-child(1) {
-    top: 30%;
-    left: -10%;
-}
-
-
-.pool-water span:nth-child(2) {
-    top: 55%;
-    left: -20%;
-
-    animation-delay: 1s;
-}
-
-
-.pool-water span:nth-child(3) {
-    top: 75%;
-    left: -5%;
-
-    animation-delay: 2s;
-}
-
-
-@keyframes wave {
-
-    from {
-        transform: translateX(-30px);
-    }
-
-    to {
-        transform: translateX(30px);
-    }
-}
-
-
-/* =========================================================
-   FLUXO DE ÁGUA
-========================================================= */
-
-.water-flow {
-    position: absolute;
-
-    width: 5px;
-    height: 140px;
-
-    border-radius: 10px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            var(--blue-500),
-            transparent
-        );
-
-    transform: rotate(30deg);
-
-    opacity: 0.5;
-}
-
-
-.flow-1 {
-    top: 245px;
-    left: 28%;
-}
-
-
-.flow-2 {
-    top: 260px;
-    right: 28%;
-
-    transform: rotate(-30deg);
-}
-
-
-/* =========================================================
-   CARD DE TEMPERATURA
-========================================================= */
-
-.temperature-card {
-    position: absolute;
-
-    right: 3%;
-    bottom: 120px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    padding: 15px 20px;
-
-    background: rgba(255, 255, 255, 0.92);
-
-    border-radius: 17px;
-
-    box-shadow: var(--shadow-md);
-
-    backdrop-filter: blur(10px);
-}
-
-
-.temp-icon {
-    font-size: 1.5rem;
-}
-
-
-.temperature-card small {
-    display: block;
-
-    color: var(--gray-500);
-
-    font-size: 0.7rem;
-}
-
-
-.temperature-card strong {
-    font-size: 1.15rem;
-}
-
-
-.status-dot {
-    width: 10px;
-    height: 10px;
-
-    border-radius: 50%;
-
-    background: #45c77a;
-
-    box-shadow:
-        0 0 0 5px rgba(69, 199, 122, 0.12);
-
-    animation: pulse 2s infinite;
-}
-
-
-@keyframes pulse {
-
-    50% {
-        transform: scale(1.15);
-        opacity: 0.7;
-    }
-}
-
-
-/* =========================================================
-   7. CARDS DO PROJETO
-========================================================= */
-
-.cards-grid {
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 20px;
-}
-
-
-.info-card {
-    padding: 32px 28px;
-
-    background: var(--white);
-
-    border:
-        1px solid var(--gray-100);
-
-    border-radius: var(--radius-md);
-
-    box-shadow: var(--shadow-sm);
-
-    transition: var(--transition);
-}
-
-
-.info-card:hover {
-    transform: translateY(-8px);
-
-    box-shadow: var(--shadow-md);
-
-    border-color: var(--blue-200);
-}
-
-
-.card-icon {
-    width: 58px;
-    height: 58px;
-
-    display: grid;
-
-    place-items: center;
-
-    margin-bottom: 25px;
-
-    border-radius: 17px;
-
-    font-size: 1.7rem;
-}
-
-
-.solar-icon {
-    background: var(--yellow-100);
-}
-
-
-.temperature-icon {
-    background: var(--blue-100);
-}
-
-
-.robot-icon {
-    background: #e9e8ff;
-}
-
-
-.led-icon {
-    background: #ffe8ee;
-}
-
-
-.info-card h3 {
-    margin-bottom: 12px;
-
-    font-size: 1.15rem;
-}
-
-
-.info-card p {
-    color: var(--gray-500);
-
-    font-size: 0.92rem;
-}
-
-
-/* =========================================================
-   8. COMO FUNCIONA
-========================================================= */
-
-.how-section {
-    padding: 110px 7%;
-
-    background: var(--blue-50);
-}
-
-
-.steps {
-    max-width: 1100px;
-
-    margin: auto;
-
-    display: flex;
-
-    align-items: flex-start;
-
-    justify-content: center;
-}
-
-
-.step {
-    flex: 1;
-
-    text-align: center;
-}
-
-
-.step-number {
-    color: var(--blue-400);
-
-    font-size: 0.75rem;
-    font-weight: 800;
-
-    margin-bottom: 10px;
-}
-
-
-.step-icon {
-    width: 70px;
-    height: 70px;
-
-    display: grid;
-
-    place-items: center;
-
-    margin: auto auto 18px;
-
-    background: var(--white);
-
-    border-radius: 22px;
-
-    font-size: 1.9rem;
-
-    box-shadow: var(--shadow-sm);
-}
-
-
-.step h3 {
-    font-size: 1.05rem;
-
-    margin-bottom: 8px;
-}
-
-
-.step p {
-    max-width: 180px;
-
-    margin: auto;
-
-    color: var(--gray-500);
-
-    font-size: 0.85rem;
-}
-
-
-.step-line {
-    width: 65px;
-    height: 2px;
-
-    margin-top: 55px;
-
-    background: var(--blue-200);
-}
-
-
-/* =========================================================
-   9. ÓPTICA
-========================================================= */
-
-.optical-section {
-    background: var(--white);
-}
-
-
-.optics-grid {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 25px;
-
-    margin-bottom: 90px;
-}
-
-
-.optic-card {
-    overflow: hidden;
-
-    background: var(--gray-50);
-
-    border-radius: var(--radius-lg);
-
-    border:
-        1px solid var(--gray-100);
-
-    transition: var(--transition);
-}
-
-
-.optic-card:hover {
-    transform: translateY(-7px);
-
-    box-shadow: var(--shadow-md);
-}
-
-
-.optic-illustration {
-    position: relative;
-
-    height: 210px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    background: var(--blue-100);
-
-    font-size: 3rem;
-
-    overflow: hidden;
-}
-
-
-.absorption {
-    background:
-        linear-gradient(
-            135deg,
-            var(--yellow-100),
-            var(--blue-100)
-        );
-}
-
-
-.light-ray {
-    position: absolute;
-
-    width: 5px;
-    height: 130px;
-
-    background: var(--yellow-400);
-
-    transform: rotate(35deg);
-
-    left: 45%;
-    top: 35px;
-}
-
-
-.dark-surface {
-    position: absolute;
-
-    bottom: 0;
-    left: 0;
-
-    width: 100%;
-    height: 35px;
-
-    background: var(--blue-dark);
-}
-
-
-.reflection {
-    background: var(--yellow-50);
-}
-
-
-.reflection-ray {
-    position: absolute;
-
-    width: 5px;
-    height: 150px;
-
-    background: var(--yellow-400);
-
-    transform: rotate(-35deg);
-
-    left: 48%;
-    top: 20px;
-}
-
-
-.refraction {
-    background: var(--blue-50);
-}
-
-
-.glass {
-    position: absolute;
-
-    width: 170px;
-    height: 80px;
-
-    border:
-        4px solid rgba(255, 255, 255, 0.8);
-
-    background:
-        rgba(255, 255, 255, 0.25);
-
-    transform: rotate(-8deg);
-
-    backdrop-filter: blur(4px);
-}
-
-
-.optic-content {
-    padding: 28px;
-}
-
-
-.optic-content > span {
-    color: var(--blue-500);
-
-    font-size: 0.75rem;
-    font-weight: 800;
-}
-
-
-.optic-content h3 {
-    margin: 7px 0 12px;
-
-    font-size: 1.35rem;
-}
-
-
-.optic-content p {
-    color: var(--gray-500);
-
-    font-size: 0.9rem;
-}
-
-
-/* =========================================================
-   10. LED RGB
-========================================================= */
-
-.color-science {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 70px;
-
-    align-items: center;
-
-    padding: 55px;
-
-    border-radius: var(--radius-lg);
-
-    background:
-        radial-gradient(
-            circle at 75% 50%,
-            rgba(255, 236, 159, 0.45),
-            transparent 25%
-        ),
-        var(--blue-50);
-}
-
-
-.color-text p {
-    color: var(--gray-500);
-
-    margin-top: 18px;
-}
-
-
-/* =========================================================
-   LED DEMONSTRATIVO
-========================================================= */
-
-.rgb-demo {
-    min-height: 430px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 35px 25px;
-
-    background: var(--white);
-
-    border-radius: var(--radius-lg);
-
-    box-shadow: var(--shadow-sm);
-
-    overflow: visible;
-}
-
-
-/*
-    IMPORTANTE:
-
-    Não colocamos !important na cor do LED.
-
-    O JavaScript altera:
-    background
-    background-color
-    box-shadow
-
-    usando !important.
-
-    Portanto o CSS deixa essas propriedades
-    livres para o JavaScript controlar.
-*/
-
-.rgb-light {
-    --rgb-color: rgb(255, 0, 0);
-    --rgb-shadow:
-        0 0 25px rgba(255, 0, 0, 0.35),
-        0 0 70px rgba(255, 0, 0, 0.20);
-
-    width: 125px;
-    height: 125px;
-
-    flex-shrink: 0;
-
-    display: grid;
-
-    place-items: center;
-
-    margin-bottom: 20px;
-
-    border-radius: 50%;
 
     /*
-        Cor inicial apenas para quando
-        o JavaScript ainda não carregou.
+        Intensidade proporcional do brilho.
     */
-    background-color: rgb(255, 0, 0);
 
-    box-shadow:
-        0 0 25px rgba(255, 0, 0, 0.35),
-        0 0 70px rgba(255, 0, 0, 0.20);
+    const intensidade =
+        0.25 + (brilho / 255) * 0.75;
 
-    transition:
-        background-color 0.12s ease,
-        background 0.12s ease,
-        box-shadow 0.12s ease;
 
-    position: relative;
+    if (rgbLight) {
+
+        rgbLight.style.setProperty(
+            "--rgb-color",
+            rgb
+        );
+
+
+        rgbLight.style.setProperty(
+            "background-color",
+            rgb,
+            "important"
+        );
+
+
+        rgbLight.style.setProperty(
+            "background",
+            rgb,
+            "important"
+        );
+
+
+        rgbLight.style.setProperty(
+            "box-shadow",
+            `
+                0 0 25px rgba(${r}, ${g}, ${b}, ${intensidade}),
+                0 0 70px rgba(${r}, ${g}, ${b}, ${intensidade * 0.65})
+            `,
+            "important"
+        );
+
+    }
+
+
+    if (rgbCore) {
+
+        rgbCore.style.setProperty(
+            "background-color",
+            rgb,
+            "important"
+        );
+
+
+        rgbCore.style.setProperty(
+            "background",
+            rgb,
+            "important"
+        );
+
+
+        rgbCore.style.setProperty(
+            "box-shadow",
+            `0 0 20px ${rgb}`,
+            "important"
+        );
+
+    }
+
+
+    if (rgbValue) {
+
+        rgbValue.textContent =
+            `RGB: (${r}, ${g}, ${b})`;
+
+    }
+
 }
 
 
 /*
-    Brilho externo do LED.
+    Atualiza enquanto o usuário
+    movimenta cada controle.
 */
 
-.rgb-light::before {
-    content: "";
+[
+    redSlider,
+    greenSlider,
+    blueSlider
+].forEach(slider => {
 
-    position: absolute;
+    if (slider) {
 
-    inset: -10px;
+        slider.addEventListener(
+            "input",
+            atualizarLED
+        );
 
-    border-radius: 50%;
+    }
 
-    background:
-        var(--rgb-color);
-
-    opacity: 0.12;
-
-    filter: blur(12px);
-
-    pointer-events: none;
-
-    transition:
-        background 0.12s ease,
-        opacity 0.12s ease;
-}
+});
 
 
 /*
-    Pequeno reflexo dentro do LED.
+    Inicializa o LED com os valores
+    que já estão no HTML.
 */
 
-.rgb-light::after {
-    content: "";
-
-    position: absolute;
-
-    width: 35px;
-    height: 20px;
-
-    top: 20px;
-    left: 25px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255, 255, 255, 0.45);
-
-    filter: blur(5px);
-
-    pointer-events: none;
-}
-
-
-.rgb-core {
-    width: 35px;
-    height: 35px;
-
-    position: relative;
-
-    z-index: 2;
-
-    border-radius: 50%;
-
-    background-color: rgb(255, 0, 0);
-
-    box-shadow:
-        0 0 15px rgb(255, 0, 0);
-
-    opacity: 0.85;
-
-    filter: blur(4px);
-
-    transition:
-        background-color 0.12s ease,
-        background 0.12s ease,
-        box-shadow 0.12s ease;
-}
-
-
-.rgb-label {
-    font-weight: 800;
-
-    margin-bottom: 30px;
-}
-
-
-.rgb-controls {
-    width: 80%;
-
-    max-width: 430px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 12px;
-}
-
-
-.rgb-controls label {
-    display: grid;
-
-    grid-template-columns: 80px 1fr;
-
-    align-items: center;
-
-    gap: 10px;
-
-    font-size: 0.78rem;
-    font-weight: 700;
-}
-
-
-.rgb-controls input {
-    width: 100%;
-
-    height: 6px;
-
-    accent-color: var(--blue-500);
-
-    cursor: pointer;
-}
-
-
-.rgb-controls input:focus {
-    outline: none;
-}
-
-
-#rgb-value {
-    margin-top: 20px;
-
-    color: var(--gray-500);
-
-    font-family: monospace;
-
-    font-size: 0.8rem;
-
-    min-height: 18px;
-}
+atualizarLED();
 
 
 /* =========================================================
-   11. ROBÓTICA
+   4. SIMULADOR DE TEMPERATURA
 ========================================================= */
 
-.robotics-section {
-    background: var(--blue-50);
-}
+const temperatureSlider =
+    document.getElementById(
+        "temperature-slider"
+    );
 
 
-.flowchart {
-    max-width: 850px;
-
-    margin: auto;
-
-    text-align: center;
-}
+const temperatureValue =
+    document.querySelector(
+        ".temperature-display strong"
+    );
 
 
-.flow-node {
-    width: 210px;
-
-    margin: auto;
-
-    padding: 25px;
-
-    background: var(--white);
-
-    border:
-        1px solid var(--blue-100);
-
-    border-radius: 22px;
-
-    box-shadow: var(--shadow-sm);
-
-    transition: var(--transition);
-}
+const poolTemperature =
+    document.querySelector(
+        ".pool-temperature"
+    );
 
 
-.flow-node:hover {
-    transform: scale(1.04);
-
-    box-shadow: var(--shadow-md);
-}
-
-
-.flow-node > span {
-    display: block;
-
-    font-size: 2rem;
-
-    margin-bottom: 8px;
-}
+const miniPool =
+    document.querySelector(
+        ".mini-pool"
+    );
 
 
-.flow-node strong {
-    display: block;
-
-    font-size: 1rem;
-}
-
-
-.flow-node small {
-    color: var(--gray-500);
-
-    font-size: 0.78rem;
-}
+const systemStatus =
+    document.querySelector(
+        ".system-status"
+    );
 
 
-.flow-arrow {
-    margin: 13px 0;
-
-    color: var(--blue-400);
-
-    font-size: 1.7rem;
-    font-weight: 800;
-}
+const statusLed =
+    document.querySelector(
+        ".status-led"
+    );
 
 
-.flow-branches {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 100px;
-
-    max-width: 600px;
-
-    margin: auto;
-}
+const statusTitle =
+    document.querySelector(
+        ".status-content strong"
+    );
 
 
-.branch .flow-node {
-    width: 180px;
-}
+const statusDescription =
+    document.querySelector(
+        ".status-content p"
+    );
 
 
-.rgb-node {
-    border-color: #ffc4d2;
-}
+function atualizarTemperatura() {
+
+    if (!temperatureSlider) {
+        return;
+    }
 
 
-/* =========================================================
-   12. SIMULADOR
-========================================================= */
+    const temperatura =
+        Number(temperatureSlider.value);
 
-.simulator-section {
-    padding: 110px 7%;
 
-    background:
-        linear-gradient(
-            135deg,
-            var(--blue-600),
-            var(--blue-700)
+    /*
+        Atualiza os números da interface.
+    */
+
+    if (temperatureValue) {
+
+        temperatureValue.textContent =
+            `${temperatura}°C`;
+
+    }
+
+
+    if (poolTemperature) {
+
+        poolTemperature.textContent =
+            `${temperatura}°C`;
+
+    }
+
+
+    /*
+        Remove os estados anteriores.
+    */
+
+    if (systemStatus) {
+
+        systemStatus.classList.remove(
+            "status-cold",
+            "status-warm",
+            "status-hot"
         );
 
-    color: var(--white);
+    }
+
+
+    /*
+        TEMPERATURA BAIXA
+    */
+
+    if (temperatura < 25) {
+
+        if (systemStatus) {
+            systemStatus.classList.add(
+                "status-cold"
+            );
+        }
+
+
+        if (statusTitle) {
+            statusTitle.textContent =
+                "Aquecimento necessário";
+        }
+
+
+        if (statusDescription) {
+            statusDescription.textContent =
+                "A temperatura está baixa. O sistema deve ativar o aquecimento.";
+        }
+
+
+        if (statusLed) {
+
+            statusLed.style.background =
+                "rgb(40, 130, 255)";
+
+            statusLed.style.boxShadow =
+                "0 0 18px rgba(40, 130, 255, 0.7)";
+
+        }
+
+
+        if (miniPool) {
+
+            miniPool.style.background =
+                "linear-gradient(135deg, #9eddec, #168bab)";
+
+        }
+
+    }
+
+
+    /*
+        TEMPERATURA ADEQUADA
+    */
+
+    else if (temperatura < 30) {
+
+        if (systemStatus) {
+            systemStatus.classList.add(
+                "status-warm"
+            );
+        }
+
+
+        if (statusTitle) {
+            statusTitle.textContent =
+                "Temperatura adequada";
+        }
+
+
+        if (statusDescription) {
+            statusDescription.textContent =
+                "A piscina está em uma faixa confortável. O sistema pode reduzir o aquecimento.";
+        }
+
+
+        if (statusLed) {
+
+            statusLed.style.background =
+                "rgb(255, 205, 55)";
+
+            statusLed.style.boxShadow =
+                "0 0 18px rgba(255, 205, 55, 0.7)";
+
+        }
+
+
+        if (miniPool) {
+
+            miniPool.style.background =
+                "linear-gradient(135deg, #c8edf7, #35acc9)";
+
+        }
+
+    }
+
+
+    /*
+        TEMPERATURA ALTA
+    */
+
+    else {
+
+        if (systemStatus) {
+            systemStatus.classList.add(
+                "status-hot"
+            );
+        }
+
+
+        if (statusTitle) {
+            statusTitle.textContent =
+                "Temperatura elevada";
+        }
+
+
+        if (statusDescription) {
+            statusDescription.textContent =
+                "A temperatura está alta. O sistema deve interromper o aquecimento.";
+        }
+
+
+        if (statusLed) {
+
+            statusLed.style.background =
+                "rgb(255, 75, 85)";
+
+            statusLed.style.boxShadow =
+                "0 0 18px rgba(255, 75, 85, 0.7)";
+
+        }
+
+
+        if (miniPool) {
+
+            miniPool.style.background =
+                "linear-gradient(135deg, #ffdc68, #f7c948)";
+
+        }
+
+    }
+
 }
 
 
-.simulator-container {
-    max-width: 1100px;
+if (temperatureSlider) {
 
-    margin: auto;
-}
+    temperatureSlider.addEventListener(
+        "input",
+        atualizarTemperatura
+    );
 
 
-.simulator-intro {
-    max-width: 650px;
+    /*
+        Inicializa o simulador.
+    */
 
-    margin-bottom: 45px;
-}
+    atualizarTemperatura();
 
-
-.simulator-intro .section-tag {
-    color: var(--yellow-200);
-}
-
-
-.simulator-intro h2 span {
-    color: var(--yellow-200);
-}
-
-
-.simulator-intro p {
-    color: rgba(255, 255, 255, 0.75);
-
-    margin-top: 18px;
-}
-
-
-.simulator {
-    display: grid;
-
-    grid-template-columns: 0.9fr 1.1fr;
-
-    gap: 40px;
-
-    padding: 35px;
-
-    border-radius: var(--radius-lg);
-
-    background: rgba(255, 255, 255, 0.1);
-
-    border:
-        1px solid rgba(255, 255, 255, 0.15);
-
-    backdrop-filter: blur(10px);
-}
-
-
-/* =========================================================
-   PISCINA DO SIMULADOR
-========================================================= */
-
-.pool-preview {
-    position: relative;
-
-    min-height: 380px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 25px;
-
-    background: rgba(255, 255, 255, 0.08);
-
-    overflow: hidden;
-}
-
-
-.mini-sun {
-    position: absolute;
-
-    top: 25px;
-    right: 30px;
-
-    font-size: 2.5rem;
-}
-
-
-.mini-pool {
-    width: 90%;
-    height: 200px;
-
-    display: grid;
-
-    place-items: center;
-
-    border-radius: 50%;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--blue-300),
-            var(--blue-500)
-        );
-
-    box-shadow:
-        inset 0 -15px 0 rgba(0, 0, 0, 0.08),
-        0 20px 40px rgba(0, 0, 0, 0.15);
-
-    transition: 0.4s ease;
-}
-
-
-.pool-temperature {
-    position: relative;
-
-    z-index: 2;
-
-    font-size: 2.7rem;
-    font-weight: 800;
-
-    color: var(--white);
-
-    text-shadow:
-        0 3px 10px rgba(0, 0, 0, 0.15);
-}
-
-
-.pool-ripple {
-    position: absolute;
-
-    width: 260px;
-    height: 70px;
-
-    border:
-        2px solid rgba(255, 255, 255, 0.35);
-
-    border-radius: 50%;
-}
-
-
-/* =========================================================
-   CONTROLES DO SIMULADOR
-========================================================= */
-
-.simulator-controls {
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-}
-
-
-.temperature-display {
-    display: flex;
-
-    align-items: flex-end;
-
-    justify-content: space-between;
-
-    margin-bottom: 25px;
-}
-
-
-.temperature-display span {
-    color: rgba(255, 255, 255, 0.7);
-
-    font-size: 0.85rem;
-}
-
-
-.temperature-display strong {
-    font-size: 3rem;
-
-    line-height: 1;
-}
-
-
-#temperature-slider {
-    width: 100%;
-
-    height: 7px;
-
-    accent-color: var(--yellow-300);
-
-    cursor: pointer;
-}
-
-
-.temperature-scale {
-    display: flex;
-
-    justify-content: space-between;
-
-    margin-top: 8px;
-
-    color: rgba(255, 255, 255, 0.55);
-
-    font-size: 0.75rem;
-}
-
-
-.system-status {
-    display: flex;
-
-    align-items: center;
-
-    gap: 15px;
-
-    margin-top: 35px;
-
-    padding: 20px;
-
-    border-radius: 18px;
-
-    background: rgba(255, 255, 255, 0.1);
-
-    border:
-        1px solid rgba(255, 255, 255, 0.12);
-
-    transition:
-        background 0.3s ease,
-        border-color 0.3s ease;
-}
-
-
-.status-led {
-    width: 20px;
-    height: 20px;
-
-    flex-shrink: 0;
-
-    border-radius: 50%;
-
-    background: rgb(40, 130, 255);
-
-    box-shadow:
-        0 0 18px rgba(40, 130, 255, 0.7);
-
-    transition:
-        background 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-
-.status-content {
-    flex: 1;
-}
-
-
-.status-content strong {
-    display: block;
-
-    margin-bottom: 3px;
-
-    font-size: 1rem;
-}
-
-
-.status-content p {
-    color: rgba(255, 255, 255, 0.7);
-
-    font-size: 0.8rem;
 }
 
 
 /* =========================================================
-   ESTADOS
+   5. BOTÃO "TESTAR SISTEMA"
 ========================================================= */
 
-.status-cold {
-    background:
-        rgba(40, 130, 255, 0.13);
-
-    border-color:
-        rgba(40, 130, 255, 0.25);
-}
+const testButton =
+    document.getElementById("test-system");
 
 
-.status-warm {
-    background:
-        rgba(255, 205, 55, 0.13);
+if (testButton) {
 
-    border-color:
-        rgba(255, 205, 55, 0.25);
-}
+    testButton.addEventListener(
+        "click",
+        () => {
+
+            /*
+                Pequena animação visual
+                para indicar que o teste iniciou.
+            */
+
+            testButton.disabled = true;
+
+            const textoOriginal =
+                testButton.innerHTML;
+
+            testButton.innerHTML =
+                "⏳ Testando sistema...";
 
 
-.status-hot {
-    background:
-        rgba(255, 75, 85, 0.13);
+            /*
+                Simula o processamento
+                do sistema.
+            */
 
-    border-color:
-        rgba(255, 75, 85, 0.25);
+            setTimeout(() => {
+
+                testButton.innerHTML =
+                    "✓ Sistema funcionando!";
+
+
+                /*
+                    Depois de alguns segundos,
+                    volta ao texto original.
+                */
+
+                setTimeout(() => {
+
+                    testButton.innerHTML =
+                        textoOriginal;
+
+                    testButton.disabled =
+                        false;
+
+                }, 2000);
+
+            }, 1200);
+
+        }
+    );
+
 }
 
 
 /* =========================================================
-   13. IMPACTO / SUSTENTABILIDADE
+   6. FEEDBACK DE HOVER NOS NÓS DO FLUXOGRAMA
 ========================================================= */
 
-.impact-section {
-    padding: 110px 7%;
-
-    background: var(--white);
-}
+const flowNodes =
+    document.querySelectorAll(".flow-node");
 
 
-.impact-grid {
-    display: grid;
+flowNodes.forEach(node => {
 
-    grid-template-columns: repeat(3, 1fr);
+    node.addEventListener(
+        "mouseenter",
+        () => {
 
-    gap: 25px;
-}
+            node.style.zIndex = "5";
 
-
-.impact-card {
-    padding: 35px;
-
-    background: var(--gray-50);
-
-    border:
-        1px solid var(--gray-100);
-
-    border-radius: var(--radius-md);
-
-    transition: var(--transition);
-}
+        }
+    );
 
 
-.impact-card:hover {
-    transform: translateY(-6px);
+    node.addEventListener(
+        "mouseleave",
+        () => {
 
-    box-shadow: var(--shadow-md);
+            node.style.zIndex = "";
 
-    border-color: var(--blue-200);
-}
+        }
+    );
 
-
-.impact-card h3 {
-    margin: 15px 0 10px;
-
-    font-size: 1.2rem;
-}
+});
 
 
-.impact-card p {
-    color: var(--gray-500);
+/* =========================================================
+   7. ATUALIZAÇÃO AUTOMÁTICA DO LED RGB
+      DE ACORDO COM A TEMPERATURA
+========================================================= */
 
-    font-size: 0.9rem;
+function sincronizarLedComTemperatura() {
+
+    if (
+        !temperatureSlider ||
+        !redSlider ||
+        !greenSlider ||
+        !blueSlider
+    ) {
+        return;
+    }
+
+
+    const temperatura =
+        Number(temperatureSlider.value);
+
+
+    /*
+        Não altera os controles automaticamente.
+        Apenas atualiza o LED se houver um
+        modo de demonstração específico.
+
+        O usuário continua podendo controlar
+        o RGB manualmente.
+    */
+
 }
 
 
 /* =========================================================
-   14. RODAPÉ
+   8. INICIALIZAÇÃO
 ========================================================= */
 
-.footer {
-    padding: 55px 7%;
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
-    background: var(--blue-dark);
+        atualizarLED();
 
-    color: var(--white);
+        atualizarTemperatura();
 
-    text-align: center;
-}
-
-
-.footer p {
-    color: rgba(255, 255, 255, 0.65);
-
-    font-size: 0.85rem;
-}
-
-
-.footer strong {
-    color: var(--yellow-300);
-}
-
-
-/* =========================================================
-   15. ANIMAÇÕES AO ROLAR
-========================================================= */
-
-.before-scroll {
-    opacity: 0;
-
-    transform: translateY(30px);
-
-    transition:
-        opacity 0.7s ease,
-        transform 0.7s ease;
-}
-
-
-.show-on-scroll {
-    opacity: 1;
-
-    transform: translateY(0);
-}
-
-
-/* =========================================================
-   16. RESPONSIVIDADE
-========================================================= */
-
-@media (max-width: 1100px) {
-
-    .cards-grid {
-        grid-template-columns: repeat(2, 1fr);
     }
-
-
-    .hero {
-        gap: 30px;
-    }
-
-
-    .hero h1 {
-        font-size: clamp(2.8rem, 5vw, 4.5rem);
-    }
-
-
-    .color-science {
-        gap: 40px;
-        padding: 40px;
-    }
-
-}
-
-
-@media (max-width: 850px) {
-
-    .navbar {
-        width: 90%;
-    }
-
-
-    .menu-toggle {
-        display: block;
-    }
-
-
-    .nav-links {
-        position: absolute;
-
-        top: 78px;
-        left: 5%;
-
-        width: 90%;
-
-        display: none;
-
-        flex-direction: column;
-
-        align-items: stretch;
-
-        gap: 0;
-
-        padding: 15px;
-
-        background: rgba(255, 255, 255, 0.98);
-
-        border-radius: 0 0 20px 20px;
-
-        box-shadow: var(--shadow-md);
-    }
-
-
-    .nav-links.active {
-        display: flex;
-    }
-
-
-    .nav-links li {
-        width: 100%;
-    }
-
-
-    .nav-links a {
-        display: block;
-
-        padding: 13px 15px;
-    }
-
-
-    .hero {
-        grid-template-columns: 1fr;
-
-        padding-top: 130px;
-    }
-
-
-    .hero-content {
-        text-align: center;
-    }
-
-
-    .hero-content > p {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-
-    .hero-buttons {
-        justify-content: center;
-    }
-
-
-    .hero-visual {
-        min-height: 480px;
-    }
-
-
-    .color-science {
-        grid-template-columns: 1fr;
-    }
-
-
-    .simulator {
-        grid-template-columns: 1fr;
-    }
-
-
-    .optics-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-
-    .impact-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-}
-
-
-@media (max-width: 650px) {
-
-    .section {
-        padding: 80px 6%;
-    }
-
-
-    .how-section,
-    .simulator-section,
-    .impact-section {
-        padding: 80px 6%;
-    }
-
-
-    .cards-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .optics-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .impact-grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .hero {
-        padding-left: 6%;
-        padding-right: 6%;
-    }
-
-
-    .hero h1 {
-        font-size: 2.8rem;
-    }
-
-
-    .solar-panel {
-        width: 190px;
-        height: 125px;
-
-        left: 2%;
-    }
-
-
-    .sun {
-        width: 80px;
-        height: 80px;
-
-        right: 10px;
-
-        font-size: 3rem;
-    }
-
-
-    .pool {
-        width: 95%;
-        height: 175px;
-    }
-
-
-    .temperature-card {
-        right: 0;
-        bottom: 100px;
-
-        padding: 12px 15px;
-    }
-
-
-    .steps {
-        flex-direction: column;
-
-        align-items: center;
-
-        gap: 15px;
-    }
-
-
-    .step-line {
-        width: 2px;
-        height: 35px;
-
-        margin: 0;
-    }
-
-
-    .color-science {
-        padding: 30px 20px;
-    }
-
-
-    .rgb-demo {
-        min-height: 400px;
-
-        padding: 30px 15px;
-    }
-
-
-    .rgb-controls {
-        width: 95%;
-    }
-
-
-    .rgb-controls label {
-        grid-template-columns: 70px 1fr;
-    }
-
-
-    .simulator {
-        padding: 20px;
-    }
-
-
-    .pool-preview {
-        min-height: 300px;
-    }
-
-
-    .mini-pool {
-        height: 160px;
-    }
-
-
-    .temperature-display strong {
-        font-size: 2.4rem;
-    }
-
-}
-
-
-@media (max-width: 430px) {
-
-    .hero h1 {
-        font-size: 2.45rem;
-    }
-
-
-    .btn {
-        width: 100%;
-    }
-
-
-    .hero-buttons {
-        width: 100%;
-    }
-
-
-    .hero-visual {
-        min-height: 410px;
-    }
-
-
-    .solar-panel {
-        width: 160px;
-        height: 105px;
-
-        top: 100px;
-    }
-
-
-    .pool {
-        bottom: 20px;
-    }
-
-
-    .temperature-card {
-        transform: scale(0.9);
-
-        transform-origin: right bottom;
-    }
-
-
-    .rgb-light {
-        width: 105px;
-        height: 105px;
-    }
-
-
-    .rgb-core {
-        width: 30px;
-        height: 30px;
-    }
-
-}
+);
