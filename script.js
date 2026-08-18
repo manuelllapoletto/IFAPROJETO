@@ -1,12 +1,7 @@
-/* =========================================================
-   AQUACEP — SCRIPT.JS
-   Projeto Integrador | CEP
-========================================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
-       1. MENU MOBILE
+       MENU MOBILE
     ===================================================== */
 
     const menuToggle = document.querySelector(".menu-toggle");
@@ -14,22 +9,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (menuToggle && navLinks) {
 
-        menuToggle.addEventListener("click", () => {
+        menuToggle.addEventListener("click", function () {
 
-            const isOpen = navLinks.classList.toggle("active");
+            navLinks.classList.toggle("active");
+
+            const aberto =
+                navLinks.classList.contains("active");
 
             menuToggle.setAttribute(
                 "aria-expanded",
-                isOpen ? "true" : "false"
+                aberto ? "true" : "false"
             );
 
         });
 
+        navLinks.querySelectorAll("a").forEach(function (link) {
 
-        // Fecha o menu ao clicar em um link
-        navLinks.querySelectorAll("a").forEach(link => {
-
-            link.addEventListener("click", () => {
+            link.addEventListener("click", function () {
 
                 navLinks.classList.remove("active");
 
@@ -46,169 +42,189 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       2. LED RGB INTERATIVO
+       LED RGB
     ===================================================== */
 
-    const redRange = document.getElementById("red-range");
-    const greenRange = document.getElementById("green-range");
-    const blueRange = document.getElementById("blue-range");
+    const red = document.getElementById("red-range");
+    const green = document.getElementById("green-range");
+    const blue = document.getElementById("blue-range");
 
-    const rgbLight = document.getElementById("rgb-light");
-    const rgbValue = document.getElementById("rgb-value");
-
-    const rgbCore = rgbLight
-        ? rgbLight.querySelector(".rgb-core")
-        : null;
+    const led = document.getElementById("rgb-light");
+    const core = document.querySelector(".rgb-core");
+    const rgbText = document.getElementById("rgb-value");
 
 
     /*
-        Função responsável por atualizar o LED.
+        Verifica se todos os elementos existem.
     */
 
-    function updateRGB() {
-
-        // Verifica se todos os elementos existem
-        if (
-            !redRange ||
-            !greenRange ||
-            !blueRange ||
-            !rgbLight
-        ) {
-            return;
-        }
+    if (red && green && blue && led) {
 
 
-        const red = Number(redRange.value);
-        const green = Number(greenRange.value);
-        const blue = Number(blueRange.value);
+        function atualizarLED() {
+
+            /*
+                Converte os valores das barras
+                para números.
+            */
+
+            const R = parseInt(red.value, 10) || 0;
+            const G = parseInt(green.value, 10) || 0;
+            const B = parseInt(blue.value, 10) || 0;
 
 
-        const rgb = `rgb(${red}, ${green}, ${blue})`;
+            /*
+                Monta a cor.
+            */
 
-        const shadow = `
-            0 0 25px rgba(${red}, ${green}, ${blue}, 0.45),
-            0 0 70px rgba(${red}, ${green}, ${blue}, 0.25)
-        `;
-
-
-        /*
-            Atualiza o LED principal.
-        */
-
-        rgbLight.style.setProperty(
-            "background-color",
-            rgb,
-            "important"
-        );
-
-        rgbLight.style.setProperty(
-            "background",
-            rgb,
-            "important"
-        );
-
-        rgbLight.style.setProperty(
-            "box-shadow",
-            shadow,
-            "important"
-        );
+            const cor = "rgb(" + R + ", " + G + ", " + B + ")";
 
 
-        /*
-            Atualiza as variáveis CSS.
-            Isso também faz o brilho externo
-            (::before) acompanhar a cor.
-        */
+            /*
+                Monta o brilho do LED.
+            */
 
-        rgbLight.style.setProperty(
-            "--rgb-color",
-            rgb
-        );
-
-        rgbLight.style.setProperty(
-            "--rgb-shadow",
-            shadow
-        );
+            const brilho =
+                "0 0 25px rgba(" + R + "," + G + "," + B + ",0.45)," +
+                "0 0 70px rgba(" + R + "," + G + "," + B + ",0.25)";
 
 
-        /*
-            Atualiza o núcleo interno.
-        */
+            /*
+                MUDA A COR DO LED PRINCIPAL
+            */
 
-        if (rgbCore) {
-
-            rgbCore.style.setProperty(
-                "background-color",
-                rgb,
-                "important"
-            );
-
-            rgbCore.style.setProperty(
+            led.style.setProperty(
                 "background",
-                rgb,
+                cor,
                 "important"
             );
 
-            rgbCore.style.setProperty(
-                "box-shadow",
-                `0 0 20px ${rgb}`,
+            led.style.setProperty(
+                "background-color",
+                cor,
                 "important"
             );
+
+            led.style.setProperty(
+                "box-shadow",
+                brilho,
+                "important"
+            );
+
+
+            /*
+                MUDA A COR DO NÚCLEO
+            */
+
+            if (core) {
+
+                core.style.setProperty(
+                    "background",
+                    cor,
+                    "important"
+                );
+
+                core.style.setProperty(
+                    "background-color",
+                    cor,
+                    "important"
+                );
+
+                core.style.setProperty(
+                    "box-shadow",
+                    "0 0 20px " + cor,
+                    "important"
+                );
+
+            }
+
+
+            /*
+                MUDA A VARIÁVEL USADA PELO
+                BRILHO EXTERNO (::before)
+            */
+
+            led.style.setProperty(
+                "--rgb-color",
+                cor
+            );
+
+
+            /*
+                MOSTRA O VALOR RGB NA TELA
+            */
+
+            if (rgbText) {
+
+                rgbText.textContent =
+                    "RGB(" + R + ", " + G + ", " + B + ")";
+
+            }
 
         }
+
+
+        /* =================================================
+           EVENTO PRINCIPAL
+
+           "input" funciona enquanto a barrinha
+           está sendo arrastada.
+
+           Funciona com:
+           - mouse
+           - touch
+           - tela de celular
+           ================================================= */
+
+        red.addEventListener(
+            "input",
+            atualizarLED
+        );
+
+        green.addEventListener(
+            "input",
+            atualizarLED
+        );
+
+        blue.addEventListener(
+            "input",
+            atualizarLED
+        );
 
 
         /*
-            Mostra o valor RGB abaixo das barras.
+            Também adicionamos "change" como
+            segurança para alguns navegadores.
         */
 
-        if (rgbValue) {
+        red.addEventListener(
+            "change",
+            atualizarLED
+        );
 
-            rgbValue.textContent =
-                `RGB(${red}, ${green}, ${blue})`;
+        green.addEventListener(
+            "change",
+            atualizarLED
+        );
 
-        }
+        blue.addEventListener(
+            "change",
+            atualizarLED
+        );
+
+
+        /*
+            Inicializa o LED com os valores
+            que já estão no HTML.
+        */
+
+        atualizarLED();
 
     }
 
 
-    /*
-        IMPORTANTE:
-        usamos tanto "input" quanto "change".
-
-        "input" funciona enquanto a barrinha
-        está sendo arrastada.
-
-        "change" funciona quando o valor
-        termina de ser alterado.
-
-        Isso deixa o comportamento consistente
-        em computador e celular.
-    */
-
-    [redRange, greenRange, blueRange].forEach(slider => {
-
-        if (!slider) return;
-
-        slider.addEventListener(
-            "input",
-            updateRGB
-        );
-
-        slider.addEventListener(
-            "change",
-            updateRGB
-        );
-
-    });
-
-
-    // Inicializa o LED imediatamente
-    updateRGB();
-
-
     /* =====================================================
-       3. SIMULADOR DE TEMPERATURA
+       SIMULADOR DE TEMPERATURA
     ===================================================== */
 
     const temperatureSlider =
@@ -219,6 +235,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const simTemperature =
         document.getElementById("sim-temperature");
+
+    const heroTemperature =
+        document.getElementById("hero-temperature");
 
     const systemStatus =
         document.getElementById("system-status");
@@ -232,318 +251,252 @@ document.addEventListener("DOMContentLoaded", () => {
     const statusDescription =
         document.getElementById("status-description");
 
-    const miniPool =
-        document.querySelector(".mini-pool");
-
-    const heroTemperature =
-        document.getElementById("hero-temperature");
-
-
-    function updateTemperature() {
-
-        if (!temperatureSlider) {
-            return;
-        }
-
-
-        const temperature =
-            Number(temperatureSlider.value);
-
-
-        /*
-            Atualiza os números.
-        */
-
-        if (temperatureNumber) {
-
-            temperatureNumber.textContent =
-                `${temperature}°C`;
-
-        }
-
-
-        if (simTemperature) {
-
-            simTemperature.textContent =
-                `${temperature}°C`;
-
-        }
-
-
-        /*
-            Também atualiza a temperatura
-            mostrada no topo do site.
-        */
-
-        if (heroTemperature) {
-
-            heroTemperature.textContent =
-                `${temperature}°C`;
-
-        }
-
-
-        /*
-            Remove estados anteriores.
-        */
-
-        if (systemStatus) {
-
-            systemStatus.classList.remove(
-                "status-cold",
-                "status-warm",
-                "status-hot"
-            );
-
-        }
-
-
-        /*
-            TEMPERATURA BAIXA
-            15°C até 22°C
-        */
-
-        if (temperature <= 22) {
-
-            if (systemStatus) {
-                systemStatus.classList.add(
-                    "status-cold"
-                );
-            }
-
-
-            if (statusTitle) {
-
-                statusTitle.textContent =
-                    "Aquecimento necessário";
-
-            }
-
-
-            if (statusDescription) {
-
-                statusDescription.textContent =
-                    "A temperatura está baixa. O sistema deve iniciar o aquecimento.";
-
-            }
-
-
-            if (statusLed) {
-
-                statusLed.style.background =
-                    "rgb(40, 130, 255)";
-
-                statusLed.style.boxShadow =
-                    "0 0 18px rgba(40, 130, 255, 0.7)";
-
-            }
-
-
-            if (miniPool) {
-
-                miniPool.style.background =
-                    "linear-gradient(135deg, #9eddec, #168bab)";
-
-            }
-
-        }
-
-
-        /*
-            TEMPERATURA IDEAL
-            23°C até 29°C
-        */
-
-        else if (temperature <= 29) {
-
-            if (systemStatus) {
-                systemStatus.classList.add(
-                    "status-warm"
-                );
-            }
-
-
-            if (statusTitle) {
-
-                statusTitle.textContent =
-                    "Temperatura adequada";
-
-            }
-
-
-            if (statusDescription) {
-
-                statusDescription.textContent =
-                    "A água está dentro de uma faixa confortável.";
-
-            }
-
-
-            if (statusLed) {
-
-                statusLed.style.background =
-                    "rgb(255, 205, 55)";
-
-                statusLed.style.boxShadow =
-                    "0 0 18px rgba(255, 205, 55, 0.7)";
-
-            }
-
-
-            if (miniPool) {
-
-                miniPool.style.background =
-                    "linear-gradient(135deg, #c8edf7, #35acc9)";
-
-            }
-
-        }
-
-
-        /*
-            TEMPERATURA ALTA
-            30°C até 35°C
-        */
-
-        else {
-
-            if (systemStatus) {
-                systemStatus.classList.add(
-                    "status-hot"
-                );
-            }
-
-
-            if (statusTitle) {
-
-                statusTitle.textContent =
-                    "Temperatura elevada";
-
-            }
-
-
-            if (statusDescription) {
-
-                statusDescription.textContent =
-                    "A temperatura está alta. O aquecimento deve ser interrompido.";
-
-            }
-
-
-            if (statusLed) {
-
-                statusLed.style.background =
-                    "rgb(255, 75, 85)";
-
-                statusLed.style.boxShadow =
-                    "0 0 18px rgba(255, 75, 85, 0.7)";
-
-            }
-
-
-            if (miniPool) {
-
-                miniPool.style.background =
-                    "linear-gradient(135deg, #ffdc68, #f7c948)";
-
-            }
-
-        }
-
-    }
-
 
     if (temperatureSlider) {
 
+        function atualizarTemperatura() {
+
+            const temperatura =
+                parseInt(
+                    temperatureSlider.value,
+                    10
+                );
+
+
+            /*
+                Atualiza os números.
+            */
+
+            if (temperatureNumber) {
+
+                temperatureNumber.textContent =
+                    temperatura + "°C";
+
+            }
+
+            if (simTemperature) {
+
+                simTemperature.textContent =
+                    temperatura + "°C";
+
+            }
+
+            if (heroTemperature) {
+
+                heroTemperature.textContent =
+                    temperatura + "°C";
+
+            }
+
+
+            /*
+                Remove os estados anteriores.
+            */
+
+            if (systemStatus) {
+
+                systemStatus.classList.remove(
+                    "status-cold",
+                    "status-warm",
+                    "status-hot"
+                );
+
+            }
+
+
+            /*
+                FRIO
+            */
+
+            if (temperatura <= 22) {
+
+                if (systemStatus) {
+
+                    systemStatus.classList.add(
+                        "status-cold"
+                    );
+
+                }
+
+                if (statusTitle) {
+
+                    statusTitle.textContent =
+                        "Aquecimento necessário";
+
+                }
+
+                if (statusDescription) {
+
+                    statusDescription.textContent =
+                        "A temperatura está baixa. O sistema deve iniciar o aquecimento.";
+
+                }
+
+                if (statusLed) {
+
+                    statusLed.style.background =
+                        "rgb(40, 130, 255)";
+
+                    statusLed.style.boxShadow =
+                        "0 0 18px rgba(40, 130, 255, 0.7)";
+
+                }
+
+            }
+
+
+            /*
+                IDEAL
+            */
+
+            else if (temperatura <= 29) {
+
+                if (systemStatus) {
+
+                    systemStatus.classList.add(
+                        "status-warm"
+                    );
+
+                }
+
+                if (statusTitle) {
+
+                    statusTitle.textContent =
+                        "Temperatura adequada";
+
+                }
+
+                if (statusDescription) {
+
+                    statusDescription.textContent =
+                        "A água está dentro de uma faixa confortável.";
+
+                }
+
+                if (statusLed) {
+
+                    statusLed.style.background =
+                        "rgb(255, 205, 55)";
+
+                    statusLed.style.boxShadow =
+                        "0 0 18px rgba(255, 205, 55, 0.7)";
+
+                }
+
+            }
+
+
+            /*
+                QUENTE
+            */
+
+            else {
+
+                if (systemStatus) {
+
+                    systemStatus.classList.add(
+                        "status-hot"
+                    );
+
+                }
+
+                if (statusTitle) {
+
+                    statusTitle.textContent =
+                        "Aquecimento interrompido";
+
+                }
+
+                if (statusDescription) {
+
+                    statusDescription.textContent =
+                        "A temperatura está alta. O sistema deve interromper o aquecimento.";
+
+                }
+
+                if (statusLed) {
+
+                    statusLed.style.background =
+                        "rgb(255, 75, 85)";
+
+                    statusLed.style.boxShadow =
+                        "0 0 18px rgba(255, 75, 85, 0.7)";
+
+                }
+
+            }
+
+        }
+
+
+        /*
+            Funciona durante o movimento
+            da barrinha.
+        */
+
         temperatureSlider.addEventListener(
             "input",
-            updateTemperature
+            atualizarTemperatura
         );
 
         temperatureSlider.addEventListener(
             "change",
-            updateTemperature
-        );
-
-    }
-
-
-    // Inicializa o simulador
-    updateTemperature();
-
-
-    /* =====================================================
-       4. BOTÃO "TESTAR O SISTEMA"
-    ===================================================== */
-
-    const testButton =
-        document.querySelector(
-            'a[href="#simulador"]'
+            atualizarTemperatura
         );
 
 
-    if (testButton) {
-
-        testButton.addEventListener(
-            "click",
-            () => {
-
-                setTimeout(() => {
-
-                    if (temperatureSlider) {
-
-                        temperatureSlider.focus();
-
-                    }
-
-                }, 500);
-
-            }
-        );
+        atualizarTemperatura();
 
     }
 
 
     /* =====================================================
-       5. ANIMAÇÕES AO ROLAR
+       ANIMAÇÕES AO ROLAR
     ===================================================== */
 
-    const animatedElements =
+    const elementos =
         document.querySelectorAll(
             ".info-card, .optic-card, .step, .impact-card, .flow-node, .color-science"
         );
 
 
-    animatedElements.forEach(element => {
+    if (
+        elementos.length > 0 &&
+        "IntersectionObserver" in window
+    ) {
 
-        element.classList.add(
-            "before-scroll"
-        );
+        elementos.forEach(function (elemento) {
 
-    });
+            elemento.classList.add(
+                "before-scroll"
+            );
 
+        });
 
-    if ("IntersectionObserver" in window) {
 
         const observer =
             new IntersectionObserver(
-                entries => {
+                function (entries) {
 
-                    entries.forEach(entry => {
+                    entries.forEach(
+                        function (entry) {
 
-                        if (entry.isIntersecting) {
+                            if (
+                                entry.isIntersecting
+                            ) {
 
-                            entry.target.classList.add(
-                                "show-on-scroll"
-                            );
+                                entry.target.classList.add(
+                                    "show-on-scroll"
+                                );
 
-                            observer.unobserve(
-                                entry.target
-                            );
+                                observer.unobserve(
+                                    entry.target
+                                );
+
+                            }
 
                         }
-
-                    });
+                    );
 
                 },
                 {
@@ -552,44 +505,19 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
 
-        animatedElements.forEach(element => {
+        elementos.forEach(
+            function (elemento) {
 
-            observer.observe(element);
+                observer.observe(elemento);
 
-        });
-
-    } else {
-
-        animatedElements.forEach(element => {
-
-            element.classList.add(
-                "show-on-scroll"
-            );
-
-        });
+            }
+        );
 
     }
 
 
-    /* =====================================================
-       6. CONFIRMAÇÃO NO CONSOLE
-    ===================================================== */
-
     console.log(
-        "AquaCEP — JavaScript carregado corretamente."
-    );
-
-    console.log(
-        "LED RGB:",
-        !!redRange,
-        !!greenRange,
-        !!blueRange,
-        !!rgbLight
-    );
-
-    console.log(
-        "Simulador:",
-        !!temperatureSlider
+        "AquaCEP carregado com sucesso!"
     );
 
 });
